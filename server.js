@@ -13,8 +13,8 @@ app.use(morgan('dev')) // gives updates while using CRUD
 // DB collection
 mongoose.connect('mongodb://localhost:27017/budget', {
     useNewUrlParser: true,
-    useFindAndModify: true,
-    useCreateIndex: false,
+    useFindAndModify: false,
+    useCreateIndex: true,
     useUnifiedTopology: true
 }, () => console.log('Connected to Budget DB'))
 

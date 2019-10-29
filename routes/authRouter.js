@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 // sign up
 authRouter.post('/signup', (req, res, next) => {
-    User.findOne({username: req.body.username}, (err, existingUser) => {
+    User.findOne({username: req.body.username.toLowerCase()}, (err, existingUser) => {
         if(err) {
             res.status(500)
             return next(err)
@@ -42,4 +42,4 @@ authRouter.post('/login', (req, res, next) => {
         return res.send({token: token, user: user.toObject(), success: true})
     })
 })
-module.exports - authRouter
+module.exports = authRouter
