@@ -14,19 +14,19 @@ expenseRouter.get('/bank/:_id', (req, res, next) => {
     })
 })
 // Get a single expense from single bank account 
-// expenseRouter.get('/bank/:_id', (req, res, next) => {
-//     Expense.findOne({ _id: req.params._id }, (err, expense) => {
-//         if(err){
-//             res.status(500)
-//             return next(err)
-//         }
-//         if(!expense){
-//             res.status(404)
-//             return next(new Error("Expense not found"))
-//         }
-//         return res.send(expense)
-//     })
-// })
+expenseRouter.get('/bank/:_id', (req, res, next) => {
+    Expense.findOne({ _id: req.params._id }, (err, expense) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        if(!expense){
+            res.status(404)
+            return next(new Error("Expense not found"))
+        }
+        return res.send(expense)
+    })
+})
 
 // post a single expense to a single bank account
 expenseRouter.post('/bank/:_id', (req, res, next) => {

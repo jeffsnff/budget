@@ -1,6 +1,6 @@
 const express = require('express')
 const bankAcctRouter = express.Router()
-const Bank = require('../models/bankAccount.js')
+const Bank = require('../models/bankAccount.js') // this is the model the post will be using
 
 // this is used to CRUD the bank accounts
 
@@ -30,7 +30,7 @@ bankAcctRouter.get('/:_id', (req, res, next) => {
 })
 // Post a single bank account
 bankAcctRouter.post('/', (req, res, next) => {
-
+    // attaches the user id to the body of the account which validates the request
     req.body.user = req.user._id
 
     const newBankAcct = new Bank(req.body)
