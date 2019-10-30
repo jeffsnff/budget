@@ -23,6 +23,11 @@ const expenseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Bank",
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 })
 

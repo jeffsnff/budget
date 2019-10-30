@@ -7,6 +7,7 @@ const bankSchema = new Schema({
         required: true
     },
     accountType: {
+        type: String,
         enum: ["Checking", "Saving", "Credit Card", "Investment"],
         required: true
     },
