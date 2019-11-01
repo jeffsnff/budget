@@ -7,7 +7,7 @@ import NewBank from './NewBank.js'
 
 function Accounts() {
     const [toggle, setToggle] = useState(false)
-    const { getAllAccounts, accounts, newBankAcct } = useContext(BankContext)
+    const { getAllAccounts, accounts } = useContext(BankContext)
 
     useEffect(() => {
         getAllAccounts()
@@ -20,13 +20,12 @@ function Accounts() {
     return(
         <div>
             {mappedAccounts}
-            <button onClick={prevToggle => !prevToggle}>Add Account</button>
+            <button onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
             {toggle ?
                 <NewBank />
                 :
                 null
             }
-            <NewBank />
         </div>
     )
 }

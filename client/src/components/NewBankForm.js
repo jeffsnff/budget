@@ -22,7 +22,7 @@ function NewBankForm(props){
                 <option value="null">Select One</option>
                 <option value="Checking">Checking</option>
                 <option value="Saving">Saving</option>
-                <option value="Investments">Investments</option>
+                <option value="Investment">Investment</option>
                 <option value="Credit Card">Credit Card</option>
             
             </select>

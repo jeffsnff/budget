@@ -39,9 +39,20 @@ function BankProvider(props){
             })
             .catch(err => console.log(err))
     }
+    const clearNewBankAcct = () => {
+        // to clear the input forms for new bank and close the form
+    }
     
-    const newBankAcct = () => {
-        
+    const newBankAcct = (newBank) => {
+        userAxios.post('/api/budget/', newBank)
+            .then(res => {
+                setBankState(prevBankState => ({
+                    ...prevBankState,
+                    accounts: [...prevBankState.accounts, res.data]
+                }))
+
+            })
+            .catch(err => console.log(err))
     }
     return(
         <BankContext.Provider
@@ -51,7 +62,7 @@ function BankProvider(props){
 
                 expense: bankState.expense,
                 getBankExpense: getBankExpense,
-                
+
                 newBankAcct: newBankAcct
             }}
         >

@@ -20,7 +20,7 @@ function App(){
                     redirectTo="/"
                 />
                 <ProtectedRoutes
-                    path="/expense/:_id"
+                    path="/expense"
                     component={ExpenseList}
                     redirectTo="/"
                     />

@@ -4,8 +4,7 @@ import { BankContext } from '../context/BankProvider.js'
 import Expense from './Expense.js'
 
 function ExpenseList(props){
-    const accId = props.location.pathname.slice(9)
-
+    const accId = props.location.state.accId
     const { getBankExpense, expense } = useContext(BankContext)
 
     useEffect(() => {
