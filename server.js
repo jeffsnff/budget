@@ -3,7 +3,7 @@ const express = require('express')
 const expressJwt = require('express-jwt')
 const app = express()
 require('dotenv').config()
-const PORT = 7000
+const PORT = process.env.PORT || 7000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 
@@ -11,15 +11,17 @@ const mongoose = require('mongoose')
 app.use(express.json())
 app.use(morgan('dev')) // gives updates while using CRUD
 
+
 // DB collection
 mongoose.connect('mongodb://localhost:27017/budget',
-{
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-}, 
-() => console.log('Connected to Budget DB'))
+    {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    }, 
+    () => console.log('Connected to Budget DB')
+)
 
 // routes
 app.use('/auth', require('./routes/authRouter.js'))
@@ -36,6 +38,7 @@ app.use((err, req, res, next) => {
     }
     return res.send({errMsg: err.message})
 })
+
 
 
 app.listen(PORT, () => {

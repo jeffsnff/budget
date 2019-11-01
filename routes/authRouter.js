@@ -20,8 +20,8 @@ authRouter.post('/signup', (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            const token = jwt.sign(savedUser.toObject(), process.env.SECRET)
-            return res.status(201).send({user: savedUser.toObject(), token})
+            const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
+            return res.status(201).send({user: savedUser.withoutPassword(), token})
         })
     })
 })
@@ -33,13 +33,26 @@ authRouter.post('/login', (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        if(!user || user.password !== req.body.password){
-            res.status(403)
-            return next(new Error("Email or password are incorrect."))
+        if(!user){
+            res.status(401)
+            return next(new Error("Username or Password are incorrect."))
         }
-        const token = jwt.sign(user.toObject(), process.env.SECRET)
+        user.checkPassword(req.body.password, (err, isMatch) => {
 
-        return res.send({token: token, user: user.toObject(), success: true})
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+
+            if(!isMatch){
+                res.status(401)
+                return next(new Error("Username or Password are incorrect."))
+            }
+
+            const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
+            return res.send({token: token, user: user.withoutPassword(), success: true})
+        })
+        
     })
 })
 module.exports = authRouter

@@ -45,8 +45,9 @@ module.exports = {
         })
     ],
     devServer: {
+        historyApiFallback: true,
         proxy: [{
-            context: ['/'],
+            context: ['/auth', '/api'], // we changed ths for redirect. Check here for future mess ups
             target: 'http://localhost:7000'
         }]
     }

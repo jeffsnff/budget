@@ -48,7 +48,7 @@ bankAcctRouter.post('/', (req, res, next) => {
 bankAcctRouter.put('/:_id', (req, res, next) => {
 
     Bank.findByIdAndUpdate({_id: req.params._id, user: req.user._id}, req.body, {new: true}, (err, bank) => {
-
+        // change to findOneAndUpdate
             if(err){
                 res.status(500)
                 return next(err)
