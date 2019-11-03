@@ -14,7 +14,7 @@ function BankProvider(props){
 
     const initState = {
         accounts: [],
-        expense: []
+        expenses: []
     }
     const [ bankState, setBankState ] = useState(initState)
 
@@ -34,7 +34,7 @@ function BankProvider(props){
             .then(res => {
                 setBankState(prevBankState => ({
                     ...prevBankState,
-                    expense: res.data
+                    expenses: res.data
                 }))
             })
             .catch(err => console.log(err))
@@ -54,16 +54,39 @@ function BankProvider(props){
             })
             .catch(err => console.log(err))
     }
+    const updateBankAcct = () => {
+        
+    }
+
+    const newExpense = (expense, props) => {
+        userAxios.post(`/api/expense/bank/${props.accid}`, expense)
+            .then(res => {
+                setBankState(prevBankState => ({
+                    ...prevBankState,
+                    expenses: [...prevBankState.expenses, res.data]
+                }))
+            })
+            .catch(err => console.log(err))
+    }
+    const updateExpense = () => {
+
+    }
+
+
     return(
         <BankContext.Provider
             value={{
                 accounts: bankState.accounts,
                 getAllAccounts: getAllAccounts,
 
-                expense: bankState.expense,
+                expense: bankState.expenses,
                 getBankExpense: getBankExpense,
 
-                newBankAcct: newBankAcct
+                newBankAcct: newBankAcct,
+                updateBankAcct: updateBankAcct,
+
+                newExpense: newExpense,
+                updateExpense: updateExpense
             }}
         >
             {props.children}
