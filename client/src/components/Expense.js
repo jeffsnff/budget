@@ -22,7 +22,7 @@ function Expense(props){
                     <span>{payee}</span>
                     <span>{catagory}</span>
                     <span>{details}</span>
-                    <span>{amount}</span>
+                    <span>${amount}</span>
                     <button onClick={toggle}>Update</button>
                 </div>
             }

@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { UserContext } from '../context/UserProvider.js'
 import { BankContext } from '../context/BankProvider.js'
 import Account from '../components/Account.js'
 import NewBank from './NewBank.js'
@@ -18,7 +17,7 @@ function AccountList() {
     )
     
     return(
-        <div>
+        <div className="big">
             
             <button onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
             {toggle ?

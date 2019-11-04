@@ -10,7 +10,6 @@ function ExpenseList(props){
     const [ toggle, setToggle ] = useState(false)
     let bank = {}
 
-
     useEffect(() => {
         getBankExpense(accId)
         getAllAccounts()
@@ -31,9 +30,10 @@ function ExpenseList(props){
     // console.log('da bank', accounts)
     return(
         <div>
-            <h1>{bank.bankName}</h1>
-            {mappedExpenses}
+            <h1>{bank.bankName}</h1>           
+            
             <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
+            
             {
                 toggle ?
                 <NewExpense 
@@ -43,6 +43,7 @@ function ExpenseList(props){
                 :
                 null
             }
+            {mappedExpenses}
         </div>
     )
     
