@@ -17,7 +17,7 @@ function Expense(props){
                     toggle={toggle}    
                  />
                 :
-                <div>
+                <div className="expense">
                     <span>{date}</span>
                     <span>{payee}</span>
                     <span>{catagory}</span>

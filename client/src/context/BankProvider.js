@@ -18,9 +18,12 @@ function BankProvider(props){
     }
     const [ bankState, setBankState ] = useState(initState)
 
+    console.log('da accounts', bankState.accounts)
+
     const getAllAccounts = () => {
     userAxios.get('/api/budget/user')
         .then(res => {
+            console.log('response', res.data)
             setBankState(prevBankState => ({
                 ...prevBankState,
                 accounts: res.data
@@ -81,7 +84,9 @@ function BankProvider(props){
                             return exp
                         }
                     })
-                    return { expenses }
+                    return { 
+                        ...prevBankState,
+                        expenses }
                 }
             )})
     }
@@ -90,7 +95,9 @@ function BankProvider(props){
         userAxios.delete(`/api/expense/bank/${id}`)
             .then(() =>  setBankState(prev => {
                 const updatedExpenses = prev.expenses.filter(item => item._id !== id)
-                return { expenses: updatedExpenses }
+                return { 
+                    ...prev,
+                    expenses: updatedExpenses }
             }))
             .catch(err => console.log(err))
     }

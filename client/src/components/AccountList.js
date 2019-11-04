@@ -7,26 +7,26 @@ import NewBank from './NewBank.js'
 
 function AccountList() {
     const [toggle, setToggle] = useState(false)
-    const [ btn, setBtn] = useState("Add Account")
     const { getAllAccounts, accounts } = useContext(BankContext)
 
     useEffect(() => {
         getAllAccounts()
     },[])
     
-    const mappedAccounts = accounts.map(account => 
+    const mappedAccounts = accounts && accounts.map(account => 
         <Account key={account._id} {...account} />
     )
     
     return(
         <div>
-            {mappedAccounts}
+            
             <button onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
             {toggle ?
                 <NewBank />
                 :
                 null
             }
+            {mappedAccounts}
         </div>
     )
 }
