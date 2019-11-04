@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Auth from './components/Auth.js'
-import Accounts from './components/Accounts.js'
+import AccountList from './components/AccountList.js'
 import NavBar from './components/NavBar.js'
 import {UserContext} from './context/UserProvider.js'
 import ExpenseList from './components/ExpenseList.js'
@@ -16,7 +16,7 @@ function App(){
                 <Route exact path="/" render={rProps => token ? <Redirect to="/accounts"/> : <Auth {...rProps} />} />
                 <ProtectedRoutes 
                     path="/accounts"
-                    component={Accounts}
+                    component={AccountList}
                     redirectTo="/"
                 />
                 <ProtectedRoutes
