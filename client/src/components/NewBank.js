@@ -14,6 +14,7 @@ function NewBank(){
     const handleSubmit = e => {
         e.preventDefault()
         newBankAcct(newBank)
+        setNewBank(initState)
     }
 
     return (

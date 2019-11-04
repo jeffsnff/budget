@@ -7,6 +7,7 @@ import NewBank from './NewBank.js'
 
 function AccountList() {
     const [toggle, setToggle] = useState(false)
+    const [ btn, setBtn] = useState("Add Account")
     const { getAllAccounts, accounts } = useContext(BankContext)
 
     useEffect(() => {

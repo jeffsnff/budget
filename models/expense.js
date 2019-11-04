@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const expenseSchema = new Schema({
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     payee: {
