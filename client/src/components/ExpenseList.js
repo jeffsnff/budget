@@ -1,30 +1,42 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {UserContext} from '../context/UserProvider.js'
 import { BankContext } from '../context/BankProvider.js'
 import Expense from './Expense.js'
+import NewExpense from './NewExpense'
 
 function ExpenseList(props){
-    const accId = props.location.state.accId
-    const { getBankExpense, expense } = useContext(BankContext)
 
+
+    const accId = props.location.state.accId
+    const { getBankExpense, expenses } = useContext(BankContext)
+    const [ toggle, setToggle ] = useState(false)
+    
+    
     useEffect(() => {
         getBankExpense(accId)
     },[])
 
     
-    const mappedExpense = expense.map(exp => 
-        <Expense key={exp._id} {...exp} />
+    const mappedExpenses = expenses.map(exp => 
+        <Expense  key={exp._id} {...exp} />
     )
+
+    
     return(
         <div>
-            <div>
-                {mappedExpense}
-            </div>
-            
+            {mappedExpenses}
+            <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
+            {
+                toggle ?
+                <NewExpense 
+                accid={accId}
+                toggle={toggle}
+                />
+                :
+                null
+            }
         </div>
     )
-    // to bring in expense from bank account, I need to pull in said bank accounts expenses when it mounts.
-    // need the id passed from the account page
     
 }
 

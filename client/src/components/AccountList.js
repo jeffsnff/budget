@@ -5,8 +5,9 @@ import Account from '../components/Account.js'
 import NewBank from './NewBank.js'
 
 
-function Accounts() {
+function AccountList() {
     const [toggle, setToggle] = useState(false)
+    const [ btn, setBtn] = useState("Add Account")
     const { getAllAccounts, accounts } = useContext(BankContext)
 
     useEffect(() => {
@@ -30,4 +31,4 @@ function Accounts() {
     )
 }
 
-export default Accounts
+export default AccountList
