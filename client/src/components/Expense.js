@@ -5,20 +5,25 @@ function Expense(props){
     const [ edit, setEdit ] = useState(false)
     const { date, payee, catagory, details, amount } = props
 
-
+    const toggle = () => {
+        setEdit(prevEdit => (!prevEdit))
+    }
     return(
-        <div onClick={ () => setEdit (prevEdit => !prevEdit)}>
+        <div>
             {
                 edit ?
-                <UpdateExpense {...props} />
+                <UpdateExpense 
+                    {...props}
+                    toggle={toggle}    
+                 />
                 :
                 <div>
-
-                <span>{date}</span>
-                <span>{payee}</span>
-                <span>{catagory}</span>
-                <span>{details}</span>
-                <span>{amount}</span>
+                    <span>{date}</span>
+                    <span>{payee}</span>
+                    <span>{catagory}</span>
+                    <span>{details}</span>
+                    <span>{amount}</span>
+                    <button onClick={toggle}>Update</button>
                 </div>
             }
         </div>

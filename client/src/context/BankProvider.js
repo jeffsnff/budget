@@ -39,9 +39,6 @@ function BankProvider(props){
             })
             .catch(err => console.log(err))
     }
-    const clearNewBankAcct = () => {
-        // to clear the input forms for new bank and close the form
-    }
     
     const newBankAcct = (newBank) => {
         userAxios.post('/api/budget/', newBank)
@@ -50,12 +47,16 @@ function BankProvider(props){
                     ...prevBankState,
                     accounts: [...prevBankState.accounts, res.data]
                 }))
+                
 
             })
             .catch(err => console.log(err))
     }
     const updateBankAcct = () => {
         
+    }
+    const deleteBankAcct = () => {
+
     }
 
     const newExpense = (expense, props) => {
@@ -68,10 +69,31 @@ function BankProvider(props){
             })
             .catch(err => console.log(err))
     }
-    const updateExpense = () => {
 
+    const updateExpense = (id, updatedExpense) => {
+        userAxios.put(`/api/expense/bank/${id}`, updatedExpense)
+            .then(res => {
+                setBankState(prevBankState => {
+                    const expenses = prevBankState.expenses.map(exp => {
+                        if (exp._id === id){
+                            return res.data
+                        }else{
+                            return exp
+                        }
+                    })
+                    return { expenses }
+                }
+            )})
     }
 
+    const deleteExpense = (id) => {
+        userAxios.delete(`/api/expense/bank/${id}`)
+            .then(() =>  setBankState(prev => {
+                const updatedExpenses = prev.expenses.filter(item => item._id !== id)
+                return { expenses: updatedExpenses }
+            }))
+            .catch(err => console.log(err))
+    }
 
     return(
         <BankContext.Provider
@@ -79,19 +101,19 @@ function BankProvider(props){
                 accounts: bankState.accounts,
                 getAllAccounts: getAllAccounts,
 
-                expense: bankState.expenses,
+                expenses: bankState.expenses,
                 getBankExpense: getBankExpense,
 
                 newBankAcct: newBankAcct,
                 updateBankAcct: updateBankAcct,
 
                 newExpense: newExpense,
-                updateExpense: updateExpense
+                updateExpense: updateExpense,
+                deleteExpense: deleteExpense
             }}
         >
             {props.children}
         </BankContext.Provider>
     )
-
 }
 export default BankProvider

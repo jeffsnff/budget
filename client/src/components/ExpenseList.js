@@ -8,7 +8,7 @@ function ExpenseList(props){
 
 
     const accId = props.location.state.accId
-    const { getBankExpense, expense } = useContext(BankContext)
+    const { getBankExpense, expenses } = useContext(BankContext)
     const [ toggle, setToggle ] = useState(false)
     
     
@@ -17,18 +17,21 @@ function ExpenseList(props){
     },[])
 
     
-    const mappedExpense = expense.map(exp => 
+    const mappedExpenses = expenses.map(exp => 
         <Expense  key={exp._id} {...exp} />
     )
 
     
     return(
         <div>
-            {mappedExpense}
+            {mappedExpenses}
             <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
             {
                 toggle ?
-                <NewExpense accid={accId}/>
+                <NewExpense 
+                accid={accId}
+                toggle={toggle}
+                />
                 :
                 null
             }

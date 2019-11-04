@@ -9,7 +9,7 @@ function NewExpenseForm(props){
         <div>
             <form onSubmit={handleSubmit}>
                 <input 
-                    type="text" 
+                    type="date" 
                     name="date" 
                     value={date} 
                     onChange={handleChange} 

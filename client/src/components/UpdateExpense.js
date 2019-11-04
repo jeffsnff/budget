@@ -4,7 +4,7 @@ import {BankContext} from '../context/BankProvider.js'
 
 function UpdateExpense(props){
     const initState = { date: props.date, payee: props.payee, catagory: props.catagory, details: props.details, amount: props.amount }
-    const {updateExpense} = useContext(BankContext)
+    const {updateExpense, deleteExpense, getBankExpenses} = useContext(BankContext)
     const [ thing, setThing ] = useState(initState)
 
     const handleChange = e => {
@@ -12,10 +12,10 @@ function UpdateExpense(props){
         setThing(prevThing => 
             ({...prevThing, [name]: value}))
     }
-
     const handleSubmit = e => {
         e.preventDefault()
-        alert("Submited")
+        updateExpense(props._id, thing)
+        props.toggle()
     }
 
     return(
@@ -23,7 +23,9 @@ function UpdateExpense(props){
             <UpdateExpenseForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
+                deleteExpense={deleteExpense}
                 inputs={thing}
+                id={props._id}
              />
         </div>
     )
