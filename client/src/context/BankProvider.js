@@ -52,13 +52,6 @@ function BankProvider(props){
             })
             .catch(err => console.log(err))
     }
-    const updateBankAcct = () => {
-        
-    }
-    const deleteBankAcct = () => {
-
-    }
-
     const newExpense = (expense, props) => {
         userAxios.post(`/api/expense/bank/${props.accid}`, expense)
             .then(res => {
@@ -105,7 +98,6 @@ function BankProvider(props){
                 getBankExpense: getBankExpense,
 
                 newBankAcct: newBankAcct,
-                updateBankAcct: updateBankAcct,
 
                 newExpense: newExpense,
                 updateExpense: updateExpense,
