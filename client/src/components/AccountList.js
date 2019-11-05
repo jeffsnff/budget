@@ -11,21 +11,32 @@ function AccountList() {
     useEffect(() => {
         getAllAccounts()
     },[])
-    
+
+    let balance = 0;
     const mappedAccounts = accounts && accounts.map(account => 
-        <Account key={account._id} {...account} />
+        <Account key={account._id}
+                 {...account}
+                 balance={balance}
+                  />
     )
-    
+
+    console.log(`This is on accountlist : ${balance}`)
+
     return(
-        <div className="big">
+        <div>
+            <button className="addBank" onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
             
-            <button onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
-            {toggle ?
-                <NewBank />
-                :
-                null
-            }
-            {mappedAccounts}
+                
+                {toggle ?
+                    <NewBank />
+                    :
+                    null
+                }
+             <div className="mainContainer">   
+                <div className="mappedAccounts">
+                    {mappedAccounts}
+                </div>
+            </div>
         </div>
     )
 }

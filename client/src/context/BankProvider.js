@@ -18,12 +18,9 @@ function BankProvider(props){
     }
     const [ bankState, setBankState ] = useState(initState)
 
-    console.log('da accounts', bankState.accounts)
-
     const getAllAccounts = () => {
     userAxios.get('/api/budget/user')
         .then(res => {
-            console.log('response', res.data)
             setBankState(prevBankState => ({
                 ...prevBankState,
                 accounts: res.data

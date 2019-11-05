@@ -21,7 +21,7 @@ function NewExpense(props){
     }
     
     return (
-        <div>
+        <div className="newExp">
             <NewExpenseForm 
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}

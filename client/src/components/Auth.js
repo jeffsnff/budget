@@ -37,30 +37,33 @@ function Auth(){
         clearAuthErr()
     }
     return(
-        <div>
-            {!toggle ?
-                <>
-                    <AuthForm
-                        inputs={inputs}
-                        handleChange={handleChange}
-                        handleSubmit={handleSignupSubmit}
-                        btnText="Signup"
-                    />
-                    <p style={{color: 'red'}}>{authErrMsg}</p>
-                    <button onClick={toggleForms}>Already a Member?</button>
-                </>
-            :
-                <>
-                    <AuthForm
-                        inputs={inputs}
-                        handleChange={handleChange}
-                        handleSubmit={handleLoginSubmit}
-                        btnText="Login"
-                    />
-                    <p style={{color: 'red'}}>{authErrMsg}</p>
-                    <button onClick={toggleForms}>Not a Member?</button>
-                </>
-            }
+        <div className="something">
+            <div className="signIn">
+                <h1>Back to Basics Budgeting</h1>
+                {!toggle ?
+                    <>
+                        <AuthForm
+                            inputs={inputs}
+                            handleChange={handleChange}
+                            handleSubmit={handleSignupSubmit}
+                            btnText="Signup"
+                        />
+                        <p style={{color: 'red'}}>{authErrMsg}</p>
+                        <button onClick={toggleForms}>Already a Member?</button>
+                    </>
+                :
+                    <>
+                        <AuthForm
+                            inputs={inputs}
+                            handleChange={handleChange}
+                            handleSubmit={handleLoginSubmit}
+                            btnText="Login"
+                        />
+                        <p style={{color: 'red'}}>{authErrMsg}</p>
+                        <button onClick={toggleForms}>Not a Member?</button>
+                    </>
+                }
+            </div>
         </div>
     )
 }

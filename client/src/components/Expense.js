@@ -8,6 +8,7 @@ function Expense(props){
     const toggle = () => {
         setEdit(prevEdit => (!prevEdit))
     }
+
     return(
         <div>
             {

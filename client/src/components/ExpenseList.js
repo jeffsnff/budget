@@ -18,22 +18,34 @@ function ExpenseList(props){
     const result = accounts ? accounts.filter(account => {
         return account._id === accId
     }) : []
-    
     bank = result[0] ? result[0]: {}
-    
+
     const mappedExpenses = expenses.map(exp => 
         <Expense  key={exp._id} {...exp} />
     )
 
-  
 
-    // console.log('da bank', accounts)
+    let subtotal = 0
+    for(let i=0; i<mappedExpenses.length; i++){
+        subtotal = subtotal + mappedExpenses[i].props.amount
+    }
+    let balance = bank.accountBalance + subtotal
+
+    // tried assigning balance to props... but it did not work. this is being passed from AccountList.js to Account.js to ExpenseList.js
+    // What I am trying to do is update the database with the new balance.
+    props.location.state.balance = balance
+    console.log(`This is the first expenselist : ${props.location.state.balance}`)
+
+
     return(
+        
         <div>
-            <h1>{bank.bankName}</h1>           
-            
-            <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
-            
+            <div className="accountDetails">
+                <h1>{bank.bankName}</h1>       
+                <h2>Total Expenses : ${subtotal}</h2>
+                <h2>Remaining Balance : ${balance}</h2>
+                <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
+            </div>
             {
                 toggle ?
                 <NewExpense 
@@ -44,6 +56,7 @@ function ExpenseList(props){
                 null
             }
             {mappedExpenses}
+            
         </div>
     )
     
