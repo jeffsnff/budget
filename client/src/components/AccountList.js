@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { UserContext } from '../context/UserProvider.js'
 import { BankContext } from '../context/BankProvider.js'
 import Account from '../components/Account.js'
 import NewBank from './NewBank.js'
@@ -7,26 +6,37 @@ import NewBank from './NewBank.js'
 
 function AccountList() {
     const [toggle, setToggle] = useState(false)
-    const [ btn, setBtn] = useState("Add Account")
     const { getAllAccounts, accounts } = useContext(BankContext)
 
     useEffect(() => {
         getAllAccounts()
     },[])
-    
-    const mappedAccounts = accounts.map(account => 
-        <Account key={account._id} {...account} />
+
+    let balance = 0;
+    const mappedAccounts = accounts && accounts.map(account => 
+        <Account key={account._id}
+                 {...account}
+                 balance={balance}
+                  />
     )
-    
+
+    console.log(`This is on accountlist : ${balance}`)
+
     return(
         <div>
-            {mappedAccounts}
-            <button onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
-            {toggle ?
-                <NewBank />
-                :
-                null
-            }
+            <button className="addBank" onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
+            
+                
+                {toggle ?
+                    <NewBank />
+                    :
+                    null
+                }
+             <div className="mainContainer">   
+                <div className="mappedAccounts">
+                    {mappedAccounts}
+                </div>
+            </div>
         </div>
     )
 }

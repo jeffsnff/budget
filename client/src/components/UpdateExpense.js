@@ -26,6 +26,7 @@ function UpdateExpense(props){
                 deleteExpense={deleteExpense}
                 inputs={thing}
                 id={props._id}
+                toggle={props.toggle}
              />
         </div>
     )

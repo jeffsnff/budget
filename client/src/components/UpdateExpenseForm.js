@@ -1,10 +1,10 @@
 import React from 'react'
 
 function UpdateExpenseForm(props){
-    const { deleteExpense, handleChange, handleSubmit, inputs: { date, payee, catagory, details, amount }} = props
+    const { toggle, deleteExpense, handleChange, handleSubmit, inputs: { date, payee, catagory, details, amount }} = props
     return (
-        <div>
-        <form onSubmit={handleSubmit}>
+        <div >
+        <form className="formExp" onSubmit={handleSubmit}>
                 <input 
                     type="date" 
                     name="date" 
@@ -45,6 +45,7 @@ function UpdateExpenseForm(props){
 
             </form>
             <button onClick={() => deleteExpense(props.id)}>Delete</button>
+            <button onClick={() => toggle()}>Cancel</button>
         </div>
     )
 }

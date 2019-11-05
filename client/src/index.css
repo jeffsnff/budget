@@ -1,3 +1,185 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #2c003e;
+}
+/* This is for all screen sizes */
 span{
-    border: 1px solid black;
+    width: 100%;
+    border: 1px solid teal;
+}
+.expense {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.accountDetails{
+    margin: 5%;
+}
+/* ---------------------------- */
+/* For screens 700px or bigger */
+@media(min-width: 700px){
+
+    
+    body{
+        background-color: white;
+        font-family: 'Dancing Script', cursive;
+        height: 100vh;
+    }
+    .something{
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 70vh;
+    }
+    .signIn{
+       position: relative;
+       top: 30%;
+    }
+     a{
+        color: #2c003e;
+    }
+    .navbar{
+        padding: 1%;
+        color: #2c003e;
+        background-color: #41aaa8;
+    }
+    .navbar > a {
+        color: #2c003e;
+    }
+    .navbar > div{
+        text-align: right;
+    }
+    .navbar > div > button{
+        background-color: #d2fafb;
+        color: #2c003e;
+        width: 50px;
+    }
+    .expense{
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+    }
+    .expense> button {
+        width: 10%;
+    }
+    .mainContainer{
+        margin: 1%;
+        display: flex;
+        justify-content: center;
+    }
+    .mappedAccounts{
+        text-align: center;
+        width: 300px;
+    }
+    .account{
+        margin: 1%;
+        border: 1px solid #b4dad9;
+    }
+    .newExp {
+        margin: 5%;
+        border: 1px solid #b4dad9;
+    }
+    .newBank{
+        font-size: 50px;
+        margin: 5%;
+        border: 1px solid #b4dad9;
+    }
+    form{
+        display: flex;
+        flex-direction: row;
+    }
+    .newBank > form > input{
+        width: 100%;
+    }
+    button{
+        color: #2c003e;
+        background-color: #d2fafb;
+    }
+}
+
+/* For Screens 699px or less */
+@media(max-width: 699px){
+    body{
+        font-family: 'Dancing Script', cursive;
+        background-color: whitesmoke;
+        color: #2c003e;
+    }
+    a{
+        color: #2c003e;
+    }
+    .something{
+        display: flex;
+        justify-content: center;
+        height: 70vh;
+        width: 100vw;
+    }
+    .signIn{
+       position: relative;
+       top: 30%;
+    }
+    .navbar{
+        padding: 1%;
+        color: #2c003e;
+        border: 1px solid #2c003e;
+        background-color: #41aaa8;
+    }
+    .navbar > a {
+        color: #2c003e;
+    }
+    .navbar > div{
+        text-align: right;
+    }
+    .navbar > div > button{
+        background-color: #d2fafb;
+        color: #2c003e;
+        width: 50px;
+    }
+    .expense{
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+    }
+    .expense> button {
+        width: 20%;
+    }
+    .accountsContainer{
+        display: flex;
+        justify-content: center;
+    }
+    .mainContainer{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
+    .mappedAccounts{
+        text-align: center;
+        width: 300px;
+    }
+    .account{
+        margin: 1%;
+        border: 1px solid #b4dad9;
+    }
+    .newExp {
+        margin: 5%;
+        border: 1px solid #b4dad9;
+    }
+    .newBank{
+        font-size: 50px;
+        margin: 5%;
+        border: 1px solid #b4dad9;
+    }
+    form > input {
+        font-size: 1.2rem;
+    }
+    form{
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+    }
+    form > button {
+        width: 100px;
+    }
 }

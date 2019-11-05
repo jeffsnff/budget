@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 
 function NavBar(props){
     return(
-        <nav>
+        <nav className="navbar">
             <Link to='/accounts'>Accounts</Link>
-            <button onClick={props.logout}>Logout</button>
+            <div>
+                <p>Logged In : {props.user.username}</p>
+                <button onClick={props.logout}>Logout</button>
+            </div>
         </nav>
     )
 }

@@ -8,6 +8,7 @@ function Expense(props){
     const toggle = () => {
         setEdit(prevEdit => (!prevEdit))
     }
+
     return(
         <div>
             {
@@ -17,12 +18,12 @@ function Expense(props){
                     toggle={toggle}    
                  />
                 :
-                <div>
+                <div className="expense">
                     <span>{date}</span>
                     <span>{payee}</span>
                     <span>{catagory}</span>
                     <span>{details}</span>
-                    <span>{amount}</span>
+                    <span>${amount}</span>
                     <button onClick={toggle}>Update</button>
                 </div>
             }
