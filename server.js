@@ -6,14 +6,17 @@ require('dotenv').config()
 const PORT = process.env.PORT || 7000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+const path = require("path") // used for deploying to heroku
+
 
 // middleware for every request
 app.use(express.json())
 app.use(morgan('dev')) // gives updates while using CRUD
+app.use(express.static(path.join(__dirname, "client", "build"))) // used for deplying to heroku
 
 
-// DB collection
-mongoose.connect('mongodb://localhost:27017/budget',
+// DB collection MONGODB_URL is to connect to mongoLab for Heroku deployment
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/budget',
     {
         useNewUrlParser: true,
         useFindAndModify: false,
@@ -39,7 +42,9 @@ app.use((err, req, res, next) => {
     return res.send({errMsg: err.message})
 })
 
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+}); // used for deploying to heroku
 
 app.listen(PORT, () => {
     console.log(`Server running on Port : ${PORT}`)
