@@ -45,7 +45,8 @@ function BankProvider(props){
             .then(res => {
                 setBankState(prevBankState => ({
                     ...prevBankState,
-                    accounts: [...prevBankState.accounts, res.data]
+                    accounts: [...prevBankState.accounts, res.data],
+                    
                 }))
                 
 

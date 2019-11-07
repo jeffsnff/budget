@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 7000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require("path") // used for deploying to heroku
-const secret = process.env.SECERT || "applesand bananasliketo eatweirdthings whyamidoing thistomyself"
+const secret = process.env.SECRET || "applesand bananasliketo eatweirdthings whyamidoing thistomyself"
 
 
 // middleware for every request
