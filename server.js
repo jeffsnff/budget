@@ -8,7 +8,6 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require("path") // used for deploying to heroku
 const secret = process.env.SECRET || "applesand bananasliketo eatweirdthings whyamidoing thistomyself"
-const csp = require('express-csp-header');
 
 
 // middleware for every request
@@ -34,12 +33,6 @@ app.use('/api', expressJwt({secret: secret})) // requires user.req here on out
 // they must be logged in to access these routes
 app.use('/api/budget', require('./routes/bankAcctRouter'))
 app.use('/api/expense', require('./routes/expenseRouter'))
-app.use(csp({
-    policies: {
-        'default-src': [csp.NONE],
-        'img-src': [csp.SELF],
-    }
-}));
 
 // Global Error Handling
 app.use((err, req, res, next) => {
@@ -51,7 +44,6 @@ app.use((err, req, res, next) => {
 })
 
 app.get("*", (req, res) => {
-    res.header('Content-Security-Policy', "img-src 'self'");
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 }); // used for deploying to heroku
 
