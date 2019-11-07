@@ -44,6 +44,7 @@ app.use((err, req, res, next) => {
 })
 
 app.get("*", (req, res) => {
+    res.header('Content-Security-Policy', "img-src 'self'");
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 }); // used for deploying to heroku
 
