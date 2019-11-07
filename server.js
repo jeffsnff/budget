@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 7000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require("path") // used for deploying to heroku
+const secret = process.env.SECERT || "applesand bananasliketo eatweirdthings whyamidoing thistomyself"
 
 
 // middleware for every request
@@ -28,7 +29,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/budget',
 
 // routes
 app.use('/auth', require('./routes/authRouter.js'))
-app.use('/api', expressJwt({secret: process.env.SECRET})) // requires user.req here on out
+app.use('/api', expressJwt({secret: secret})) // requires user.req here on out
 // they must be logged in to access these routes
 app.use('/api/budget', require('./routes/bankAcctRouter'))
 app.use('/api/expense', require('./routes/expenseRouter'))
