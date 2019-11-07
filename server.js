@@ -13,7 +13,7 @@ const secret = process.env.SECRET || "applesand bananasliketo eatweirdthings why
 // middleware for every request
 app.use(express.json())
 app.use(morgan('dev')) // gives updates while using CRUD
-app.use(express.static(path.join(__dirname, "client", "build"))) // used for deplying to heroku
+app.use(express.static(path.join(__dirname, "client", "dist"))) // used for deplying to heroku
 
 
 // DB collection MONGODB_URL is to connect to mongoLab for Heroku deployment
@@ -44,7 +44,7 @@ app.use((err, req, res, next) => {
 })
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 }); // used for deploying to heroku
 
 app.listen(PORT, () => {
