@@ -28,7 +28,12 @@ function AccountList() {
             
                 
                 {toggle ?
-                    <NewBank />
+                    <div className="modal">
+                        <h1>New Back Account</h1>
+                        <NewBank />
+                        <button onClick={() => setToggle(prevToggle => !prevToggle)}>Cancel</button>
+                    </div>
+                    
                     :
                     null
                 }

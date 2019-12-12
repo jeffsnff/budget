@@ -22,7 +22,17 @@ span{
 /* For screens 700px or bigger */
 @media(min-width: 700px){
 
-    
+    .modal{
+        background-color: white;
+        border: 2px solid red;
+        position: absolute;
+        left: 30%;
+        top: 30%;
+        width: 40%;
+    }
+    .modal >h1{
+        text-align: center;
+    }
     body{
         background-color: white;
         font-family: 'Dancing Script', cursive;
