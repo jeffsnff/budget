@@ -23,12 +23,12 @@ span{
 @media(min-width: 700px){
 
     .modal{
+        border: 1px solid #41aaa8;
         background-color: white;
-        border: 2px solid red;
         position: absolute;
         left: 30%;
         top: 30%;
-        width: 40%;
+        width: 500px;
     }
     .modal >h1{
         text-align: center;
@@ -76,17 +76,24 @@ span{
         width: 10%;
     }
     .mainContainer{
+        
+        height: 100vh;
+        border: 1px solid green;
         margin: 1%;
         display: flex;
         justify-content: center;
     }
     .mappedAccounts{
+        position: absolute;
+        left: 1%;
+        border: 1px solid blue;
         text-align: center;
         width: 300px;
     }
     .account{
+        border: 1px solid red;
         margin: 1%;
-        border: 1px solid #b4dad9;
+        /* border: 1px solid #b4dad9; */
     }
     .newExp {
         margin: 5%;

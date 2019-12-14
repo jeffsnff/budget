@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
-import AuthForm from './AuthForm.js'
-import { UserContext } from '../context/UserProvider.js'
+import AuthForm from './AuthForm'
+import { UserContext } from '../../context/UserProvider.js'
 
 
 function Auth(){

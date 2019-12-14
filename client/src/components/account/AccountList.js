@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { BankContext } from '../context/BankProvider.js'
-import Account from '../components/Account.js'
-import NewBank from './NewBank.js'
+import { BankContext } from '../../context/BankProvider.js'
+import Account from './Account.js'
+import NewBank from '../bank/NewBank.js'
 
 
 function AccountList() {
@@ -19,12 +19,18 @@ function AccountList() {
                  balance={balance}
                   />
     )
+    function newAccount(){
+        if(toggle === false){
+            setToggle(prevToggle => !prevToggle)
+        }
+        
 
+    }
     console.log(`This is on accountlist : ${balance}`)
 
     return(
         <div>
-            <button className="addBank" onClick={ () => setToggle(prevToggle => !prevToggle)}>Add Account</button>
+            <button className="addBank" onClick={newAccount}>Add Account</button>
             
                 
                 {toggle ?
@@ -40,6 +46,9 @@ function AccountList() {
              <div className="mainContainer">   
                 <div className="mappedAccounts">
                     {mappedAccounts}
+                </div>
+                <div>
+                    Budget
                 </div>
             </div>
         </div>

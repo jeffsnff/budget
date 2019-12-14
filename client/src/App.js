@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Auth from './components/Auth.js'
-import AccountList from './components/AccountList.js'
+import Auth from './components/auth/Auth.js'
+import AccountList from './components/account/AccountList.js'
 import NavBar from './components/NavBar.js'
 import {UserContext} from './context/UserProvider.js'
-import ExpenseList from './components/ExpenseList.js'
+import ExpenseList from './components/expense/ExpenseList.js'
 import ProtectedRoutes from './shared/ProtectedRoutes.js'
 
 function App(){

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
-import NewExpenseForm from './NewExpenseForm'
-import {BankContext} from '../context/BankProvider.js'
+import NewExpenseForm from './NewExpenseForm.js'
+import {BankContext} from '../../context/BankProvider.js'
 
 function NewExpense(props){
 
