@@ -26,7 +26,8 @@ span{
         border: 1px solid #41aaa8;
         background-color: white;
         position: absolute;
-        left: 30%;
+        z-index: 1;
+        left: 32%;
         top: 30%;
         width: 500px;
     }
@@ -76,24 +77,20 @@ span{
         width: 10%;
     }
     .mainContainer{
-        
-        height: 100vh;
-        border: 1px solid green;
-        margin: 1%;
         display: flex;
         justify-content: center;
+        height: 100vh;
+        margin: 1%;
     }
     .mappedAccounts{
         position: absolute;
         left: 1%;
-        border: 1px solid blue;
         text-align: center;
         width: 300px;
     }
     .account{
-        border: 1px solid red;
         margin: 1%;
-        /* border: 1px solid #b4dad9; */
+        border: 1px solid #b4dad9;
     }
     .newExp {
         margin: 5%;
