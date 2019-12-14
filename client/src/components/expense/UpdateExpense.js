@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import UpdateExpenseForm from './UpdateExpenseForm.js'
-import {BankContext} from '../context/BankProvider.js'
+import {BankContext} from '../../context/BankProvider.js'
 
 function UpdateExpense(props){
     const initState = { date: props.date, payee: props.payee, catagory: props.catagory, details: props.details, amount: props.amount }

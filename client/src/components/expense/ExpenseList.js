@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { BankContext } from '../context/BankProvider.js'
+import { BankContext } from '../../context/BankProvider.js'
 import Expense from './Expense.js'
-import NewExpense from './NewExpense'
+import NewExpense from './NewExpense.js'
 
 function ExpenseList(props){
 
