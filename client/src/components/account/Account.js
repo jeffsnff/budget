@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom'
 
 function Account(props){
     return(
-            <div className="account">
-                <Link to={{pathname: `/expense`, state: {accId: props._id, balance: props.balance}}}>
-                    <span>{props.bankName}</span>
-                    <span>{props.accountType}</span>
-                    <span>{props.balance}</span>
-                </Link>
+            
+        <Link to={{pathname: `/expense`, state: {accId: props._id, balance: props.balance}}}>
+                <div className="account">
+                    <div>{props.bankName} </div>
+                    <div>{props.accountType}</div>
+                    <div>{props.balance}</div>
+                
             </div>
+        </Link>
     )
 }
 
