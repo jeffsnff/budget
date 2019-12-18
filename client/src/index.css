@@ -89,8 +89,14 @@ span{
         width: 300px;
     }
     .account{
+        /* try to fix the spacing */
         margin: 1%;
         border: 1px solid #b4dad9;
+    }
+    .account > span{
+        /* try to fix the spacing */
+        display: flex;
+        justify-content: space-between;
     }
     .newExp {
         margin: 5%;
