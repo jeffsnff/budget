@@ -39,7 +39,7 @@ function ExpenseList(props){
 
     return(
         
-        <div>
+        <div className="expenseMainContainer">
             <div className="accountDetails">
                 <h1>{bank.bankName}</h1>       
                 <h2>Total Expenses : ${subtotal}</h2>
@@ -55,6 +55,15 @@ function ExpenseList(props){
                 :
                 null
             }
+
+            <div className="expenseLabels">
+                    <span>Date</span>
+                    <span>Payee</span>
+                    <span>Catagory</span>
+                    <span>Details</span>
+                    <span>Outflow</span>
+                    <span>Inflow</span>
+            </div>
             {mappedExpenses}
             
         </div>
@@ -63,3 +72,7 @@ function ExpenseList(props){
 }
 
 export default ExpenseList
+
+
+
+

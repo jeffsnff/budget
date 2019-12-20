@@ -26,6 +26,7 @@ function NewExpense(props){
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 inputs={expense}
+
             />
         </div>
     )
