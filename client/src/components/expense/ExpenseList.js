@@ -43,7 +43,7 @@ function ExpenseList(props){
         <div className="expenseMainContainer">
             <div className="accountDetails">
                 <h1>{bank.bankName}</h1>       
-                <h2>Total Expenses : ${subtotal}</h2>
+                <h2>Total Expenses : ${subtotal.toFixed(2)}</h2>
                 <h2>Remaining Balance : ${balance.toFixed(2)}</h2>
                 <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
             </div>
