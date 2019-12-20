@@ -30,6 +30,7 @@ function ExpenseList(props){
         subtotal = subtotal + mappedExpenses[i].props.amount
     }
     let balance = bank.accountBalance + subtotal
+    
 
     // tried assigning balance to props... but it did not work. this is being passed from AccountList.js to Account.js to ExpenseList.js
     // What I am trying to do is update the database with the new balance.
@@ -43,7 +44,7 @@ function ExpenseList(props){
             <div className="accountDetails">
                 <h1>{bank.bankName}</h1>       
                 <h2>Total Expenses : ${subtotal}</h2>
-                <h2>Remaining Balance : ${balance}</h2>
+                <h2>Remaining Balance : ${balance.toFixed(2)}</h2>
                 <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
             </div>
             {
