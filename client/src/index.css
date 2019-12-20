@@ -68,13 +68,23 @@ span{
         color: #2c003e;
         width: 50px;
     }
-    .expense{
-        margin: 5%;
+    .expenseLabels{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        width: 100%;
+
+    }
+    .expense{
+        text-align: center;
     }
     .expense> button {
         width: 10%;
+    }
+    .expenseMainContainer{
+        padding: 2%;
+        height: 85vh;
+        border: 2px solid red;
+        overflow: scroll;
     }
     .mainContainer{
         display: flex;

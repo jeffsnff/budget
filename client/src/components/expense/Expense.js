@@ -8,8 +8,14 @@ function Expense(props){
     const toggle = () => {
         setEdit(prevEdit => (!prevEdit))
     }
+    const date1 = new Date(date)
+    const day = date1.getDate()
+    const month = date1.getMonth() + 1
+    const year = date1.getFullYear()
 
+    const newDate = `${month}-${day}-${year}`
     return(
+        
         <div>
             {
                 edit ?
@@ -17,15 +23,15 @@ function Expense(props){
                     {...props}
                     toggle={toggle}    
                  />
-                :
-                <div className="expense">
-                    <span>{date}</span>
-                    <span>{payee}</span>
-                    <span>{catagory}</span>
-                    <span>{details}</span>
-                    <span>${amount}</span>
-                    <button onClick={toggle}>Update</button>
-                </div>
+                : 
+                    <div className="expense">
+                        <span>{newDate}</span>
+                        <span>{payee}</span>
+                        <span>{catagory}</span>
+                        <span>{details}</span>
+                        <span>${amount}</span>
+                        <button onClick={toggle}>Update</button>
+                    </div>
             }
         </div>
         
