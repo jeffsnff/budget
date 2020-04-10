@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm'
 import { UserContext } from '../../context/UserProvider.js'
+import { MDBBtn } from 'mdbreact'
 
 
 function Auth(){
@@ -49,7 +50,7 @@ function Auth(){
                             btnText="Signup"
                         />
                         <p style={{color: 'red'}}>{authErrMsg}</p>
-                        <button onClick={toggleForms}>Already a Member?</button>
+                        <MDBBtn onClick={toggleForms}>Already a Member?</MDBBtn>
                     </>
                 :
                     <>
@@ -60,7 +61,7 @@ function Auth(){
                             btnText="Login"
                         />
                         <p style={{color: 'red'}}>{authErrMsg}</p>
-                        <button onClick={toggleForms}>Not a Member?</button>
+                        <MDBBtn onClick={toggleForms}>Not a Member?</MDBBtn>
                     </>
                 }
             </div>

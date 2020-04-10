@@ -10,7 +10,7 @@ import ProtectedRoutes from './shared/ProtectedRoutes.js'
 function App(){
     const { token, logout, user } = useContext(UserContext)
     return(
-        <div>
+        <div className="container">
             { token && <NavBar logout={logout} user={user} />}
             <Switch>
                 <Route exact path="/" render={rProps => token ? <Redirect to="/accounts"/> : <Auth {...rProps} />} />

@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Account from './Account.js'
 import NewBank from '../bank/NewBank.js'
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 
 function AccountList() {
@@ -29,12 +30,11 @@ function AccountList() {
     console.log(`This is on accountlist : ${balance}`)
 
     return(
-        <div>
+        <MDBContainer style={{border: "1px solid red"}} className="col-xl-12">
             <button className="addBank" onClick={newAccount}>Add Account</button>
             
-                
                 {toggle ?
-                    <div className="modal">
+                    <div>
                         <h1>New Back Account</h1>
                         <NewBank />
                         <button onClick={() => setToggle(prevToggle => !prevToggle)}>Cancel</button>
@@ -51,7 +51,7 @@ function AccountList() {
                     Budget
                 </div>
             </div>
-        </div>
+        </MDBContainer>
     )
 }
 
