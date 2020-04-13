@@ -2,7 +2,8 @@ import React, { useEffect, useContext, useState } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Account from './Account.js'
 import NewBank from '../bank/NewBank.js'
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { Link } from 'react-router-dom'
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 
 
 function AccountList() {
@@ -15,10 +16,18 @@ function AccountList() {
 
     let balance = 0;
     const mappedAccounts = accounts && accounts.map(account => 
-        <Account key={account._id}
-                 {...account}
-                 balance={balance}
-                  />
+      
+        
+        <MDBTableBody>
+            <Account
+              
+              key={account._id}
+              {...account}
+              balance={balance}
+            />
+        </MDBTableBody>
+        
+      
     )
     function newAccount(){
         if(toggle === false){
@@ -30,27 +39,29 @@ function AccountList() {
     console.log(`This is on accountlist : ${balance}`)
 
     return(
-        <MDBContainer style={{border: "1px solid red"}} className="col-xl-12">
-            <button className="addBank" onClick={newAccount}>Add Account</button>
-            
-                {toggle ?
-                    <div>
-                        <h1>New Back Account</h1>
-                        <NewBank />
-                        <button onClick={() => setToggle(prevToggle => !prevToggle)}>Cancel</button>
-                    </div>
-                    
-                    :
-                    null
-                }
-             <div className="mainContainer">   
-                <div className="mappedAccounts">
-                    {mappedAccounts}
-                </div>
-                <div>
-                    Budget
-                </div>
-            </div>
+        <MDBContainer className="col-xl-12">
+            <MDBBtn className="addBank" onClick={newAccount}>Add Account</MDBBtn>
+              {toggle ?
+                  <div>
+                      <h1>New Back Account</h1>
+                      <NewBank />
+                      <button onClick={() => setToggle(prevToggle => !prevToggle)}>Cancel</button>
+                  </div>
+                :
+                  null
+              }
+             <MDBContainer>
+              <MDBTable>
+                <MDBTableHead>
+                  <tr>
+                    <th>Bank Name</th>
+                    <th>Account Type</th>
+                    <th>Balance</th>
+                  </tr>
+                </MDBTableHead>
+                  {mappedAccounts}
+              </MDBTable>
+            </MDBContainer>
         </MDBContainer>
     )
 }
