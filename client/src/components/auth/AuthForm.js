@@ -7,7 +7,7 @@ function AuthForm(props){
         <MDBRow className="row d-flex justify-content-center">
           <MDBCol className="col-xl-6">
             <form onSubmit={handleSubmit}>
-              <p className="h5 text-center mb-4">Sign in</p>
+              <h2 className="text-center mb-4">{btnText}</h2>
               <div className="grey-text">
                 <MDBInput name="username" onChange={handleChange} label="Type your email" icon="envelope" group type="email" validate value={username}error="wrong"
                   success="right" />
