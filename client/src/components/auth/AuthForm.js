@@ -5,7 +5,7 @@ function AuthForm(props){
     return (
       <MDBContainer className="col-xl-12">
         <MDBRow className="row d-flex justify-content-center">
-          <MDBCol className="col-xl-6">
+          <MDBCol className="col-xl-8 col-lg-8 col-md-8">
             <form onSubmit={handleSubmit}>
               <h2 className="text-center mb-4">{btnText}</h2>
               <div className="grey-text">

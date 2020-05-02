@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Expense from './Expense.js'
 import NewExpense from './NewExpense.js'
+import { MDBContainer, MDBTable, MDBTableHead} from 'mdbreact';
 
 function ExpenseList(props){
 
@@ -41,33 +42,37 @@ function ExpenseList(props){
     return(
       <>
         <>
-            <h1>{bank.bankName}</h1>       
-            <h2>Total Expenses : ${subtotal.toFixed(2)}</h2>
-            <h2>Remaining Balance : ${balance.toFixed(2)}</h2>
-            <button onClick={ () => setNewExpense(prevToggle=>!prevToggle)}>
-              Add Expense
-            </button>
+          <h1>{bank.bankName}</h1>       
+          <h2>Total Expenses : ${subtotal.toFixed(2)}</h2>
+          <h2>Remaining Balance : ${balance.toFixed(2)}</h2>
+          <button onClick={ () => setNewExpense(prevToggle=>!prevToggle)}>
+            Add Expense
+          </button>
         </>
 
-        {
-            newExpense ?
-            <NewExpense 
-            accid={accId}
-            />
-            :
-            null
+        {newExpense ?
+          <NewExpense 
+          accid={accId}
+          />
+        :
+          null
         }
 
-        <div>
-                <span>Date</span>
-                <span>Payee</span>
-                <span>Catagory</span>
-                <span>Details</span>
-                <span>Outflow</span>
-                <span>Inflow</span>
-        </div>
-
-        {mappedExpenses}
+        <MDBContainer>
+          <MDBTable>
+            <MDBTableHead>
+              <tr>
+                <th>Date</th>
+                <th>Payee</th>
+                <th>Catagory</th>
+                <th>Details</th>
+                <th>Outflow</th>
+                <th>Inflow</th>
+              </tr>
+            </MDBTableHead>
+              {mappedExpenses} 
+          </MDBTable>
+        </MDBContainer>
       </>
     )
     
