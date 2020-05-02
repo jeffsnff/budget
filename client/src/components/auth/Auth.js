@@ -38,10 +38,10 @@ function Auth(){
         clearAuthErr()
     }
     return(
-        <Container className="something">
+        <Container>
             
           <h1 className="display-4 text-center mt-4 font-weight-bold">Back to Basics Budgeting</h1>
-          <MDBCol size="12">
+          <MDBCol>
             {!toggle ?
               <>
                 <AuthForm

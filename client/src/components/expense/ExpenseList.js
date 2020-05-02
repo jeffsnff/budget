@@ -7,7 +7,7 @@ function ExpenseList(props){
 
     const accId = props.location.state.accId
     const { getBankExpense, expenses, getAllAccounts, accounts } = useContext(BankContext)
-    const [ toggle, setToggle ] = useState(false)
+    const [ newExpense, setNewExpense ] = useState(false)
     let bank = {}
 
     useEffect(() => {
@@ -39,35 +39,36 @@ function ExpenseList(props){
 
 
     return(
-        
-        <div className="expenseMainContainer">
-            <div className="accountDetails">
-                <h1>{bank.bankName}</h1>       
-                <h2>Total Expenses : ${subtotal.toFixed(2)}</h2>
-                <h2>Remaining Balance : ${balance.toFixed(2)}</h2>
-                <button onClick={ () => setToggle(prevToggle=>!prevToggle)}>Add Expense</button>
-            </div>
-            {
-                toggle ?
-                <NewExpense 
-                accid={accId}
-                toggle={toggle}
-                />
-                :
-                null
-            }
+      <>
+        <>
+            <h1>{bank.bankName}</h1>       
+            <h2>Total Expenses : ${subtotal.toFixed(2)}</h2>
+            <h2>Remaining Balance : ${balance.toFixed(2)}</h2>
+            <button onClick={ () => setNewExpense(prevToggle=>!prevToggle)}>
+              Add Expense
+            </button>
+        </>
 
-            <div className="expenseLabels">
-                    <span>Date</span>
-                    <span>Payee</span>
-                    <span>Catagory</span>
-                    <span>Details</span>
-                    <span>Outflow</span>
-                    <span>Inflow</span>
-            </div>
-            {mappedExpenses}
-            
+        {
+            newExpense ?
+            <NewExpense 
+            accid={accId}
+            />
+            :
+            null
+        }
+
+        <div>
+                <span>Date</span>
+                <span>Payee</span>
+                <span>Catagory</span>
+                <span>Details</span>
+                <span>Outflow</span>
+                <span>Inflow</span>
         </div>
+
+        {mappedExpenses}
+      </>
     )
     
 }

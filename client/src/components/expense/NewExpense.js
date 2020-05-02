@@ -21,14 +21,12 @@ function NewExpense(props){
     }
     
     return (
-        <div className="newExp">
-            <NewExpenseForm 
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                inputs={expense}
+        <NewExpenseForm 
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            inputs={expense}
 
-            />
-        </div>
+        />
     )
 }
 

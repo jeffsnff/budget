@@ -4,7 +4,7 @@ function NewBankForm(props){
     
     const { handleChange, handleSubmit, inputs: { bankName, accountBalance, accountType } } = props
     return (
-        <div className="newBank">
+        <div>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
