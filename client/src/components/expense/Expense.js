@@ -15,25 +15,24 @@ function Expense(props){
 
     const newDate = `${month}-${day}-${year}`
     return(
-        
-        <div>
-            {
-                edit ?
-                <UpdateExpense 
-                    {...props}
-                    toggle={toggle}    
-                 />
-                : 
-                    <div>
-                        <span>{newDate}</span>
-                        <span>{payee}</span>
-                        <span>{catagory}</span>
-                        <span>{details}</span>
-                        <span>${amount}</span>
-                        <button onClick={toggle}>Update</button>
-                    </div>
-            }
-        </div>
+        <>
+          {
+            edit ?
+            <UpdateExpense 
+                {...props}
+                toggle={toggle}    
+            />
+          : 
+            <tr>
+                <td>{newDate}</td>
+                <td>{payee}</td>
+                <td>{catagory}</td>
+                <td>{details}</td>
+                <td>${amount}</td>
+                <button onClick={toggle}>Update</button>
+            </tr>
+          }
+        </>
         
     )
 }
