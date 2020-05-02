@@ -4,10 +4,11 @@ import Account from './Account.js'
 import NewBank from '../bank/NewBank.js'
 import { Link } from 'react-router-dom'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+import ModalPage from '../ModalPage.js'
 
 
 function AccountList() {
-    const [toggle, setToggle] = useState(false)
+    const [newAccount, setNewAccount] = useState(false)
     const { getAllAccounts, accounts } = useContext(BankContext)
 
     useEffect(() => {
@@ -29,23 +30,27 @@ function AccountList() {
         
       
     )
-    function newAccount(){
-        if(toggle === false){
-            setToggle(prevToggle => !prevToggle)
-        }
-        
-
+    function addNewAccount(){
+            setNewAccount(prevNewAccount => !prevNewAccount)
     }
     console.log(`This is on accountlist : ${balance}`)
 
     return(
-        <MDBContainer className="col-xl-12">
-            <MDBBtn className="addBank" onClick={newAccount}>Add Account</MDBBtn>
-              {toggle ?
+        <MDBContainer>
+          {!newAccount ?
+            // <MDBBtn onClick={addNewAccount}>Add Account</MDBBtn>
+            <ModalPage
+              
+            />
+            :
+            null
+          }
+            
+              {newAccount ?
                   <div>
                       <h1>New Back Account</h1>
                       <NewBank />
-                      <button onClick={() => setToggle(prevToggle => !prevToggle)}>Cancel</button>
+                      <button onClick={() => addNewAccount()}>Cancel</button>
                   </div>
                 :
                   null

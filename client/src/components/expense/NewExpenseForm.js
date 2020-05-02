@@ -37,7 +37,7 @@ function NewExpenseForm(props){
                     placeholder="Description">
                 </input>
                 <input 
-                    type="text" 
+                    type="number" 
                     name="amount" 
                     value={amount} 
                     onChange={handleChange} 
