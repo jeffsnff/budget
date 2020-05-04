@@ -32,6 +32,10 @@ function Auth(){
         setInputs(initState)
 
     }
+    
+    const handleTestSubmit = () => {
+      login({username: "johndoe@gmail.com", password: "somepassword"})
+    }
 
     const toggleForms = () => {
         setToggle(prevToggle => !prevToggle)
@@ -65,6 +69,10 @@ function Auth(){
                 <MDBBtn onClick={toggleForms}>Not a Member?</MDBBtn>
               </>
             }
+            <Row>
+              <MDBBtn onClick={handleTestSubmit}>Login John Doe</MDBBtn>
+            </Row>
+            
           </MDBCol>
         </Container>
     )
