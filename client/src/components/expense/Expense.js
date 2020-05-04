@@ -13,7 +13,8 @@ function Expense(props){
     const month = date1.getMonth() + 1
     const year = date1.getFullYear()
 
-    const newDate = `${month}-${day}-${year}`
+    const newDate = `${month}/${day}/${year}`
+    
     return(
         <>
           {
@@ -28,7 +29,7 @@ function Expense(props){
                 <td>{payee}</td>
                 <td>{catagory}</td>
                 <td>{details}</td>
-                <td>${amount}</td>
+                <td>{amount}</td>
                 <button onClick={toggle}>Update</button>
             </tr>
           }
