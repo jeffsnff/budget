@@ -11,11 +11,11 @@ const bankSchema = new Schema({
         enum: ["Checking", "Saving", "Credit Card", "Investment"],
         required: true
     },
-    accountBalance: {
-        type: Number,
-        required: true,
-        default: 0
-    },
+    // accountBalance: {
+    //     type: Number,
+    //     required: true,
+    //     default: 0
+    // },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",

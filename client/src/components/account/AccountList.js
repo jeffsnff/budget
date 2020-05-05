@@ -19,14 +19,14 @@ function AccountList() {
     const mappedAccounts = accounts && accounts.map(account => 
       
         
-        <MDBTableBody>
+        
             <Account
               
               key={account._id}
               {...account}
               balance={balance}
             />
-        </MDBTableBody>
+
         
       
     )
@@ -64,7 +64,9 @@ function AccountList() {
                     <th>Balance</th>
                   </tr>
                 </MDBTableHead>
+                <MDBTableBody>        
                   {mappedAccounts}
+                </MDBTableBody>
               </MDBTable>
             </MDBContainer>
         </MDBContainer>

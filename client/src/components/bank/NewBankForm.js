@@ -27,12 +27,6 @@ function NewBankForm(props){
                     <option value="Credit Card">Credit Card</option>
                 
                 </select>
-                <input
-                    type="number"
-                    name="accountBalance"
-                    value={accountBalance}
-                    onChange={handleChange}
-                ></input>
                 <button>Submit</button>
             </form>
         </div>
