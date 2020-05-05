@@ -10,7 +10,6 @@ function Account(props){
           </Link>
         </td>
         <td>{props.accountType}</td>
-        {/* <td>{props.balance}</td> */}
       </tr>   
     )
 }
