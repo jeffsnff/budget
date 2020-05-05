@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { MDBBtn } from 'mdbreact'
 
 function NavBar(props){
     return(
@@ -7,7 +8,7 @@ function NavBar(props){
             <Link to='/accounts'>Accounts</Link>
             <div>
                 <p>Logged In : {props.user.username}</p>
-                <button onClick={props.logout}>Logout</button>
+                <MDBBtn onClick={props.logout}>Logout</MDBBtn>
             </div>
         </nav>
     )
