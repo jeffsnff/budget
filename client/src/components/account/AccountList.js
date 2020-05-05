@@ -61,7 +61,7 @@ function AccountList() {
                   <tr>
                     <th>Bank Name</th>
                     <th>Account Type</th>
-                    <th>Balance</th>
+                    {/* <th>Balance</th> */}
                   </tr>
                 </MDBTableHead>
                 <MDBTableBody>        

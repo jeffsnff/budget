@@ -24,13 +24,12 @@ function Expense(props){
                 toggle={toggle}    
             />
           : 
-            <tr>
+            <tr onDoubleClick={toggle}>
                 <td>{newDate}</td>
                 <td>{payee}</td>
                 <td>{catagory}</td>
                 <td>{details}</td>
-                <td>{amount}</td>
-                <button onClick={toggle}>Update</button>
+                <td>$ {amount}</td>
             </tr>
           }
         </>
