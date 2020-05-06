@@ -26,6 +26,7 @@ function AccountList() {
     return(
         <MDBContainer>
           <ModalPage/>
+          <NewBank />
              <MDBContainer>
               <MDBTable>
                 <MDBTableHead>
