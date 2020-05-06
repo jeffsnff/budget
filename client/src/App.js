@@ -6,7 +6,6 @@ import NavBar from './components/NavBar.js'
 import {UserContext} from './context/UserProvider.js'
 import ExpenseList from './components/expense/ExpenseList.js'
 import ProtectedRoutes from './shared/ProtectedRoutes.js'
-import ModalPage from './components/ModalPage.js'
 
 function App(){
     const { token, logout, user } = useContext(UserContext)

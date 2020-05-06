@@ -4,7 +4,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import UserProvider from './context/UserProvider.js'
 import BankProvider from './context/BankProvider'
-// import './index.css';
+
 
 ReactDOM.render(
     <BrowserRouter>

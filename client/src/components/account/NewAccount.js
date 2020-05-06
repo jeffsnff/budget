@@ -1,26 +1,27 @@
 import React, { useState, useContext } from 'react';
-import { BankContext } from '../context/BankProvider.js'
+import { BankContext } from '../../context/BankProvider.js'
 
 
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 
 
-function ModalPage () {
+function NewAccount () {
 
-  const inputs = { bankName: '', accountType: ''}
+  const initState = { bankName: '', accountType: ''}
   const { newBankAcct } = useContext(BankContext)
-  const [ newBank, setNewBank ] = useState(inputs)
+  const [ newBank, setNewBank ] = useState(initState)
 
   const [ modal, setModal ] = useState(false)
 
 
   const toggle = () => {
     setModal(prevModal => !prevModal)
+    setNewBank(initState)
+    
   }
 
   const handleChange = e => {
       const { name, value } = e.target
-      console.log(value)
       setNewBank(prevNewBank => ({
         ...prevNewBank, 
         [name]: value
@@ -30,6 +31,7 @@ function ModalPage () {
         e.preventDefault()
         newBankAcct(newBank)
         setNewBank(initState)
+        toggle()
     }
 
   return (
@@ -39,33 +41,34 @@ function ModalPage () {
         <MDBModalHeader toggle={toggle}>New Bank Account</MDBModalHeader>
         <MDBModalBody>
           <form onSubmit={handleSubmit}>
-              <input
+              <MDBInput
                   type="text"
                   name="bankName"
-                  value={inputs.bankName}
+                  value={newBank.bankName}
                   onChange={handleChange}
-                  placeholder="Bank Name"  
-              ></input>
-              <select
+                  label="Bank Name"  
+              ></MDBInput>
+              
+              <select className="browser-default custom-select"
                   type="text"
                   name="accountType"
-                  value={inputs.accountType}
+                  value={newBank.accountType}
                   onChange={handleChange}
-                  placeholder="Account Type"
+                  label="Account Type"
               >
-                  <option value="null">Select One</option>
+                  <option value="null">Account Type</option>
                   <option value="Checking">Checking</option>
                   <option value="Saving">Saving</option>
                   <option value="Investment">Investment</option>
                   <option value="Credit Card">Credit Card</option>
               
               </select>
-              <button>Submit</button>
+              {/* <button>Submit</button> */}
           </form>
         </MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color="secondary" onClick={toggle}>Close</MDBBtn>
-          <MDBBtn color="primary">Save changes</MDBBtn>
+          <MDBBtn color="primary" onClick={handleSubmit}>Save changes</MDBBtn>
         </MDBModalFooter>
       </MDBModal>
     </MDBContainer>
@@ -73,4 +76,4 @@ function ModalPage () {
 
 }
 
-export default ModalPage;
+export default NewAccount;
