@@ -1,10 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Account from './Account.js'
-import NewBank from '../bank/NewBank.js'
-import { Link } from 'react-router-dom'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
-import ModalPage from '../ModalPage.js'
+import NewAccount from './NewAccount.js'
 
 
 function AccountList() {
@@ -25,8 +23,8 @@ function AccountList() {
 
     return(
         <MDBContainer>
-          <ModalPage/>
-             <MDBContainer>
+          <NewAccount />
+            <MDBContainer>
               <MDBTable>
                 <MDBTableHead>
                   <tr>
