@@ -8,12 +8,9 @@ function Expense(props){
     const toggle = () => {
         setEdit(prevEdit => (!prevEdit))
     }
-    const date1 = new Date(date)
-    const day = date1.getDate()
-    const month = date1.getMonth() + 1
-    const year = date1.getFullYear()
-
-    const newDate = `${month}/${day}/${year}`
+    const newDate = date.slice(0, 10)
+    const [yyyy, mm, dd ] = newDate.split('-')
+    const revdate = `${mm}/${dd}/${yyyy}`
     
     return(
         <>
@@ -25,7 +22,7 @@ function Expense(props){
             />
           : 
             <tr onDoubleClick={toggle}>
-                <td>{newDate}</td>
+                <td>{revdate}</td>
                 <td>{payee}</td>
                 <td>{catagory}</td>
                 <td>{details}</td>
