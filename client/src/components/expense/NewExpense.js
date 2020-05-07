@@ -1,33 +1,92 @@
-import React, { useState, useContext } from 'react'
-import NewExpenseForm from './NewExpenseForm.js'
-import {BankContext} from '../../context/BankProvider.js'
+import React, { useState, useContext } from 'react';
+import { BankContext } from '../../context/BankProvider.js'
 
-function NewExpense(props){
 
-    const initState = { date: '', payee: '', catagory: '', details: '', amount: '' }
-    const { newExpense } = useContext(BankContext)
-    const [ expense, setExpense ] = useState(initState)
-    const [toggle, setToggle ] = useState(props.toggle)
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 
-    const handleChange = e =>{
-        const { name, value } = e.target
-        setExpense(prevExpense => ({...prevExpense, [name]: value}))
-    }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        newExpense(expense, props)
-        setExpense(initState)
-    }
+function NewExpense (props) {
+
+  const initState = { date: '', payee: '', catagory: '', details: '', amount: '' }
+
+  const { newExpense } = useContext(BankContext)
+  const [ expense, setExpense ] = useState(initState)
+  const [ modal, setModal ] = useState(false)
+
+  const handleChange = e =>{
+      const { name, value } = e.target
+      setExpense(prevExpense => ({...prevExpense, [name]: value}))
+  }
+
+  const handleSubmit = e => {
+      e.preventDefault()
+      newExpense(expense, props)
+      setExpense(initState)
+      toggle()
+  }
+
+
+  const toggle = () => {
+    setModal(prevModal => !prevModal)
+    setExpense(initState)
     
-    return (
-        <NewExpenseForm 
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            inputs={expense}
+  }
 
-        />
-    )
+ 
+
+  return (
+    <MDBContainer>
+      <MDBBtn onClick={toggle}>Add Expense</MDBBtn>
+      <MDBModal isOpen={modal} toggle={toggle}>
+        <MDBModalHeader toggle={toggle}>Add New Expnse</MDBModalHeader>
+        <MDBModalBody>
+          <form onSubmit={handleSubmit}>
+            <MDBInput 
+                type="date" 
+                name="date" 
+                value={expense.date} 
+                onChange={handleChange} 
+                label="Date">
+            </MDBInput>
+            <MDBInput 
+                type="text" 
+                name="payee" 
+                value={expense.payee} 
+                onChange={handleChange} 
+                label="Payee">
+            </MDBInput>
+            <MDBInput 
+                type="text" 
+                name="catagory" 
+                value={expense.catagory} 
+                onChange={handleChange} 
+                label="Catagory">
+            </MDBInput>
+            <MDBInput 
+                type="text" 
+                name="details" 
+                value={expense.details} 
+                onChange={handleChange} 
+                label="Description">
+            </MDBInput>
+            <MDBInput 
+                type="number" 
+                name="amount" 
+                value={expense.amount} 
+                onChange={handleChange} 
+                label="Amount">
+            </MDBInput>
+            <button style={{display: "none"}}>Submit</button>
+          </form>
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" onClick={toggle}>Close</MDBBtn>
+          <MDBBtn color="primary" onClick={handleSubmit}>Save changes</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
+    </MDBContainer>
+    );
+
 }
 
-export default NewExpense
+export default NewExpense;
