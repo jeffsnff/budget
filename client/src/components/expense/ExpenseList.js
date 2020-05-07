@@ -8,7 +8,7 @@ function ExpenseList(props){
 
     const accId = props.location.state.accId
     const { getBankExpense, expenses, getAllAccounts, accounts } = useContext(BankContext)
-    let bank = {}
+    let currentBank = {}
 
     useEffect(() => {
         getBankExpense(accId)
@@ -18,7 +18,13 @@ function ExpenseList(props){
     const result = accounts ? accounts.filter(account => {
         return account._id === accId
     }) : []
-    bank = result[0] ? result[0]: {}
+    currentBank = result[0] ? result[0]: {}
+
+    expenses.sort(function(a,b) {
+      let dateA = new Date(a.date), dateB = new Date(b.date)
+      return dateA - dateB
+    })
+    
 
     const mappedExpenses = expenses.map(exp => 
         <Expense  key={exp._id} {...exp} />
@@ -33,7 +39,7 @@ function ExpenseList(props){
 
     return(
         <>
-          <h1>{bank.bankName}</h1>       
+          <h1>{currentBank.bankName}</h1>       
           <h2>Remaining Balance : ${subtotal.toFixed(2)}</h2>
 
           <MDBContainer>
