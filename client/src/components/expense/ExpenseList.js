@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Expense from './Expense.js'
 import NewExpense from './NewExpense.js'
-import { MDBContainer, MDBTable, MDBTableHead} from 'mdbreact';
+import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody} from 'mdbreact';
 
 function ExpenseList(props){
 
     const accId = props.location.state.accId
     const { getBankExpense, expenses, getAllAccounts, accounts } = useContext(BankContext)
-    const [ newExpense, setNewExpense ] = useState(false)
     let bank = {}
 
     useEffect(() => {
@@ -33,44 +32,33 @@ function ExpenseList(props){
 
 
     return(
-      <>
         <>
           <h1>{bank.bankName}</h1>       
           <h2>Remaining Balance : ${subtotal.toFixed(2)}</h2>
-          <button onClick={ () => setNewExpense(prevToggle=>!prevToggle)}>
-            Add Expense
-          </button>
-        </>
 
-        {newExpense ?
-          <NewExpense 
-          accid={accId}
-          />
-        :
-          null
-        }
-
-        <MDBContainer>
-          <MDBTable>
-            <MDBTableHead>
-              <tr>
-                <th>Date</th>
-                <th>Payee</th>
-                <th>Catagory</th>
-                <th>Details</th>
-                <th>Amount</th>
-              </tr>
-            </MDBTableHead>
-              {mappedExpenses} 
-          </MDBTable>
-        </MDBContainer>
+          <MDBContainer>
+            <NewExpense 
+              accid={accId}
+            />
+            <MDBTable>
+              <MDBTableHead>
+                <tr>
+                  <th>Date</th>
+                  <th>Payee</th>
+                  <th>Catagory</th>
+                  <th>Details</th>
+                  <th>Amount</th>
+                </tr>
+              </MDBTableHead>
+              <MDBTableBody>
+                {mappedExpenses}
+              </MDBTableBody>
+                 
+            </MDBTable>
+          </MDBContainer>
       </>
     )
     
 }
 
 export default ExpenseList
-
-
-
-

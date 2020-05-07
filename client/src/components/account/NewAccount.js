@@ -42,28 +42,25 @@ function NewAccount () {
         <MDBModalBody>
           <form onSubmit={handleSubmit}>
               <MDBInput
-                  type="text"
-                  name="bankName"
-                  value={newBank.bankName}
-                  onChange={handleChange}
-                  label="Bank Name"  
+                type="text"
+                name="bankName"
+                value={newBank.bankName}
+                onChange={handleChange}
+                label="Bank Name"  
               ></MDBInput>
-              
               <select className="browser-default custom-select"
-                  type="text"
-                  name="accountType"
-                  value={newBank.accountType}
-                  onChange={handleChange}
-                  label="Account Type"
+                type="text"
+                name="accountType"
+                value={newBank.accountType}
+                onChange={handleChange}
+                label="Account Type"
               >
-                  <option value="null">Account Type</option>
-                  <option value="Checking">Checking</option>
-                  <option value="Saving">Saving</option>
-                  <option value="Investment">Investment</option>
-                  <option value="Credit Card">Credit Card</option>
-              
+                <option value="null">Account Type</option>
+                <option value="Checking">Checking</option>
+                <option value="Saving">Saving</option>
+                <option value="Investment">Investment</option>
+                <option value="Credit Card">Credit Card</option>
               </select>
-              {/* <button>Submit</button> */}
           </form>
         </MDBModalBody>
         <MDBModalFooter>
