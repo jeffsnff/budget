@@ -1,7 +1,7 @@
 import React from 'react'
 
 function UpdateExpenseForm(props){
-    const { toggle, deleteExpense, handleChange, handleSubmit, inputs: { date, payee, catagory, details, amount }} = props
+    const { toggle, deleteExpense, handleChange, handleSubmit, inputs: { date, payee, catagory, details, amount, cleared }} = props
     return (
         <div >
         <form className="formExp" onSubmit={handleSubmit}>
@@ -40,6 +40,10 @@ function UpdateExpenseForm(props){
                     onChange={handleChange} 
                     placeholder="Amount">
                 </input>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" name="checked" checked={cleared}  onChange={handleChange}  class="custom-control-input" id="defaultUnchecked" />
+                  <label class="custom-control-label" for="defaultUnchecked">Cleared</label>
+                </div>
                 <button>Submit</button>
                 
 

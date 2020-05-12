@@ -14,14 +14,13 @@ function NewExpense (props) {
   const [ modal, setModal ] = useState(false)
 
   const handleChange = e =>{
-      const { name, value } = e.target
-
-      valuee.target.name ==="checked" ? console.log(`value : ${e.target.value}`) : console.log(`checked : ${e.target.checked}`)
-
-
-
-
+      const { name, value, checked } = e.target
       setExpense(prevExpense => ({...prevExpense, [name]: value}))
+
+      if(name === "checked"){
+        // console.log(checked)
+        setExpense(prevExpense => ({...prevExpense, ['cleared']: checked}))
+      } 
       
   }
 
@@ -84,7 +83,7 @@ function NewExpense (props) {
                 label="Amount">
             </MDBInput>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" name="check" onChange={handleChange}  class="custom-control-input" id="defaultUnchecked" />
+              <input type="checkbox" name="checked" onChange={handleChange}  class="custom-control-input" id="defaultUnchecked" />
               <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
             </div>
             <button style={{display: "none"}}>Submit</button>
