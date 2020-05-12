@@ -7,7 +7,7 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 
 function NewExpense (props) {
 
-  const initState = { date: '', payee: '', catagory: '', details: '', amount: '' }
+  const initState = { date: '', payee: '', catagory: '', details: '', amount: '', cleared: false }
 
   const { newExpense } = useContext(BankContext)
   const [ expense, setExpense ] = useState(initState)
@@ -15,7 +15,14 @@ function NewExpense (props) {
 
   const handleChange = e =>{
       const { name, value } = e.target
+
+      valuee.target.name ==="checked" ? console.log(`value : ${e.target.value}`) : console.log(`checked : ${e.target.checked}`)
+
+
+
+
       setExpense(prevExpense => ({...prevExpense, [name]: value}))
+      
   }
 
   const handleSubmit = e => {
@@ -76,6 +83,10 @@ function NewExpense (props) {
                 onChange={handleChange} 
                 label="Amount">
             </MDBInput>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" name="check" onChange={handleChange}  class="custom-control-input" id="defaultUnchecked" />
+              <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+            </div>
             <button style={{display: "none"}}>Submit</button>
           </form>
         </MDBModalBody>

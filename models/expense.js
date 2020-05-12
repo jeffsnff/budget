@@ -24,6 +24,9 @@ const expenseSchema = new Schema({
         ref: "Bank",
         required: true
     },
+    cleared: {
+      type: Boolean
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
