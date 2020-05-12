@@ -3,7 +3,7 @@ import UpdateExpense from './UpdateExpense.js'
 
 function Expense(props){
     const [ edit, setEdit ] = useState(false)
-    const { date, payee, catagory, details, amount } = props
+    const { date, payee, catagory, details, amount, cleared } = props
 
     const toggle = () => {
         setEdit(prevEdit => (!prevEdit))
@@ -27,6 +27,13 @@ function Expense(props){
                 <td>{catagory}</td>
                 <td>{details}</td>
                 <td>$ {amount}</td>
+                {
+                  cleared ?
+                  <td><i class="fas fa-check-square" style={{color: "green"}}></i></td>
+                  :
+                  <td><i class="far fa-check-square"></i></td>
+                }
+                
             </tr>
           }
         </>

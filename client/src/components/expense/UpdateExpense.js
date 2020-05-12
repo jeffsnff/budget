@@ -3,18 +3,23 @@ import UpdateExpenseForm from './UpdateExpenseForm.js'
 import {BankContext} from '../../context/BankProvider.js'
 
 function UpdateExpense(props){
-    const initState = { date: props.date, payee: props.payee, catagory: props.catagory, details: props.details, amount: props.amount }
+    const initState = { date: props.date, payee: props.payee, catagory: props.catagory, details: props.details, amount: props.amount, cleared: props.cleared }
     const {updateExpense, deleteExpense, getBankExpenses} = useContext(BankContext)
-    const [ thing, setThing ] = useState(initState)
+    const [ update, setUpdate ] = useState(initState)
 
     const handleChange = e => {
-        const { name, value } = e.target
-        setThing(prevThing => 
-            ({...prevThing, [name]: value}))
+      const { name, value, checked } = e.target
+      setUpdate(prevupdate => 
+        ({...prevupdate, [name]: value}))
+        
+      if(name === "checked"){
+        // console.log(checked)
+        setUpdate(prevExpense => ({...prevExpense, ['cleared']: checked}))
+      }
     }
     const handleSubmit = e => {
         e.preventDefault()
-        updateExpense(props._id, thing)
+        updateExpense(props._id, update)
         props.toggle()
     }
 
@@ -24,7 +29,7 @@ function UpdateExpense(props){
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 deleteExpense={deleteExpense}
-                inputs={thing}
+                inputs={update}
                 id={props._id}
                 toggle={props.toggle}
              />
