@@ -82,9 +82,9 @@ function NewExpense (props) {
                 onChange={handleChange} 
                 label="Amount">
             </MDBInput>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" name="checked" onChange={handleChange}  class="custom-control-input" id="defaultUnchecked" />
-              <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+            <div className="custom-control custom-checkbox">
+              <input type="checkbox" name="checked" onChange={handleChange}  className="custom-control-input" id="cleared" />
+              <label className="custom-control-label" htmlFor="cleared" >Cleared</label>
             </div>
             <button style={{display: "none"}}>Submit</button>
           </form>
