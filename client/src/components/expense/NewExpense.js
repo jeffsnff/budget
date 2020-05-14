@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { BankContext } from '../../context/BankProvider.js'
 
-
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 
 
@@ -14,21 +13,21 @@ function NewExpense (props) {
   const [ modal, setModal ] = useState(false)
 
   const handleChange = e =>{
-      const { name, value, checked } = e.target
-      setExpense(prevExpense => ({...prevExpense, [name]: value}))
+    const { name, value, checked } = e.target
+    setExpense(prevExpense => ({...prevExpense, [name]: value}))
 
-      if(name === "checked"){
-        // console.log(checked)
-        setExpense(prevExpense => ({...prevExpense, ['cleared']: checked}))
-      } 
+    if(name === "checked"){
+      // console.log(checked)
+      setExpense(prevExpense => ({...prevExpense, ['cleared']: checked}))
+    } 
       
   }
 
   const handleSubmit = e => {
-      e.preventDefault()
-      newExpense(expense, props)
-      setExpense(initState)
-      toggle()
+    e.preventDefault()
+    newExpense(expense, props)
+    setExpense(initState)
+    toggle()
   }
 
 
