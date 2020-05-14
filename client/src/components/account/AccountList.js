@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Account from './Account.js'
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 import NewAccount from './NewAccount.js'
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
+import { MDBInput } from 'mdbreact';
 function UpdateExpenseForm(props){
     const { toggle, deleteExpense, handleChange, handleSubmit, inputs: { date, payee, catagory, details, amount, cleared }} = props
     return (

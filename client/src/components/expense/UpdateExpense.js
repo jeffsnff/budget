@@ -4,7 +4,7 @@ import {BankContext} from '../../context/BankProvider.js'
 
 function UpdateExpense(props){
     const initState = { date: props.date, payee: props.payee, catagory: props.catagory, details: props.details, amount: props.amount, cleared: props.cleared }
-    const {updateExpense, deleteExpense, getBankExpenses} = useContext(BankContext)
+    const {updateExpense, deleteExpense} = useContext(BankContext)
     const [ update, setUpdate ] = useState(initState)
 
     const handleChange = e => {
@@ -17,6 +17,7 @@ function UpdateExpense(props){
         setUpdate(prevExpense => ({...prevExpense, ['cleared']: checked}))
       }
     }
+
     const handleSubmit = e => {
         e.preventDefault()
         updateExpense(props._id, update)
