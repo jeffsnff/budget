@@ -31,7 +31,7 @@ function Expense(props){
                   cleared ?
                   <td><i className="fas fa-check-square" style={{color: "green"}}></i></td>
                   :
-                  <td><i className="far fa-check-square"></i></td>
+                  <td><i className="far fa-square"></i></td>
                 }
                 
             </tr>
