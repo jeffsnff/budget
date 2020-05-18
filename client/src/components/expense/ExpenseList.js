@@ -54,6 +54,7 @@ function ExpenseList(props){
                   <th>Catagory</th>
                   <th>Details</th>
                   <th>Amount</th>
+                  <th>Cleared</th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
