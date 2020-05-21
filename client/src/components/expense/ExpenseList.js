@@ -6,6 +6,8 @@ import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody} from 'mdbreact';
 
 function ExpenseList(props){
 
+  const [ sortedField, setSortedField ] = useState(null)
+
     const accId = props.location.state.accId
     const { getBankExpense, expenses, getAllAccounts, accounts } = useContext(BankContext)
     let currentBank = {}
@@ -28,37 +30,50 @@ function ExpenseList(props){
    
 
     // Sorts expenses before they go into the mappedExpenses
-    expenses.sort(function(a,b) {
-      let dateA = new Date(a.date)
-      let dateB = new Date(b.date)
-      return dateA - dateB
-    })
-    
-    
+    // expenses.sort((a,b) => {
+    //   let dateA = new Date(a.date)
+    //   let dateB = new Date(b.date)
+    //   return dateA - dateB
+    // })
 
-    // subtotal that is displayed at the top of web page
+
     
+    let sortedExpenses = [...expenses]
     
-    const sortFunction = (expenses) => {
-        expenses.sort(function(a,b) {
+    // starts it off as sorted by date
+    if(sortedField === null){
+      sortedExpenses.sort((a,b) => {
         let dateA = new Date(a.date)
         let dateB = new Date(b.date)
-        return dateB - dateA
+        return dateA - dateB
       })
     }
+    // if a column header is clicked, it will sort it based on that header
+    if(sortedField !== null){
+    sortedExpenses.sort((a,b) => {
+      if(a[sortedField] < b[sortedField]){
+        return -1
+      }
+      if(a[sortedField] > b[sortedField]){
+        return 1
+      }
+      return 0
+    })
+    }
+
+
+
+
+
+
+
 
     // Maps expenses data to a new row and expense
-    let mappedExpenses;
-    const mapExpenses = (expenses) => {
-      mappedExpenses = expenses.map(exp => 
+    const mappedExpenses = sortedExpenses.map(exp => 
         <Expense  key={exp._id} {...exp} />
-      )
-    }
-    // const mappedExpenses = expenses.map(exp => 
-    //     <Expense  key={exp._id} {...exp} />
-    // )
+    )
 
-    mapExpenses(expenses)
+    // subtotal that is displayed at the top of web page
     let subtotal = 0
     for(let i=0; i<mappedExpenses.length; i++){
         subtotal = subtotal + mappedExpenses[i].props.amount
@@ -76,12 +91,12 @@ function ExpenseList(props){
             <MDBTable>
               <MDBTableHead>
                 <tr>
-                  <th onClick={() => sortFunction(expenses)}>Date</th>
-                  <th>Payee</th>
-                  <th>Catagory</th>
-                  <th>Details</th>
-                  <th>Amount</th>
-                  <th>Cleared</th>
+                  <th onClick={() => setSortedField('date')}>Date</th>
+                  <th onClick={() => setSortedField('payee')}>Payee</th>
+                  <th onClick={() => setSortedField('catagory')}>Catagory</th>
+                  <th onClick={() => setSortedField('details')}>Details</th>
+                  <th onClick={() => setSortedField('amount')}>Amount</th>
+                  <th onClick={() => setSortedField('cleared')}>Cleared</th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
