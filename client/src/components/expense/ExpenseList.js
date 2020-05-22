@@ -1,41 +1,106 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useMemo } from 'react'
 import { BankContext } from '../../context/BankProvider.js'
 import Expense from './Expense.js'
 import NewExpense from './NewExpense.js'
 import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody} from 'mdbreact';
+import './expStyles.css'
+
+
+
+const useSortableData = (items, config = null) => {
+  const [ sortConfig, setSortConfig ] = useState(config)
+
+  const sortedItems = useMemo(() => {
+    let sortableItems = [...items] // This may need to be moved out of useMemo
+    // starts it off as sorted by date
+    // if(sortConfig === null){
+    //   sortedExpenses.sort((a,b) => {
+    //     let dateA = new Date(a.date)
+    //     let dateB = new Date(b.date)
+    //     return dateA - dateB
+    //   })
+    // }
+
+    // if a column header is clicked, it will sort it based on that header
+    if(sortConfig !== null){
+      sortableItems.sort((a,b) => {
+        if(a[sortConfig.key] < b[sortConfig.key]){
+          return sortConfig.direction === 'ascending' ? -1 : 1
+        }
+        if(a[sortConfig.key] > b[sortConfig.key]){
+          return sortConfig.direction === 'ascending' ? 1 : -1
+        }
+        return 0
+      })
+    }
+    return sortableItems
+  }, [ items, sortConfig])
+
+  const requestSort = key => {
+    console.log(`request Sort Key click ${key}`)
+    let direction = 'ascending'
+    if(sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending'){
+      direction = 'descending'
+    }
+    setSortConfig({ key, direction })
+  }
+  
+  return { items: sortedItems, requestSort, sortConfig }
+}
+
+
+
+
 
 function ExpenseList(props){
-
+ 
     const accId = props.location.state.accId
     const { getBankExpense, expenses, getAllAccounts, accounts } = useContext(BankContext)
+    const { items, requestSort, sortConfig } = useSortableData(expenses)
     let currentBank = {}
 
+    // Updates webpage with new account information after a new expense is added
     useEffect(() => {
         getBankExpense(accId)
         getAllAccounts()
     },[])
 
+    
+
+    // returns the account that the account id matches to for the
+    // bank name at the top of webpage
     const result = accounts ? accounts.filter(account => {
         return account._id === accId
     }) : []
     currentBank = result[0] ? result[0]: {}
 
-    expenses.sort(function(a,b) {
-      let dateA = new Date(a.date), dateB = new Date(b.date)
-      return dateA - dateB
-    })
-    
 
-    const mappedExpenses = expenses.map(exp => 
+    // Maps expenses data to a new row and expense
+    console.log(items)
+
+
+    const getClassNamesFor = (name) => {
+      if(!sortConfig){
+        return
+      }
+      return sortConfig.key === name ? sortConfig.direction : undefined
+    }
+
+
+
+
+
+
+
+    const mappedExpenses = items.map(exp => 
         <Expense  key={exp._id} {...exp} />
     )
 
-
+    // subtotal that is displayed at the top of web page
     let subtotal = 0
     for(let i=0; i<mappedExpenses.length; i++){
         subtotal = subtotal + mappedExpenses[i].props.amount
     }
-
 
     return(
         <>
@@ -49,12 +114,12 @@ function ExpenseList(props){
             <MDBTable>
               <MDBTableHead>
                 <tr>
-                  <th>Date</th>
-                  <th>Payee</th>
-                  <th>Catagory</th>
-                  <th>Details</th>
-                  <th>Amount</th>
-                  <th>Cleared</th>
+                  <th onClick={() => requestSort('date')} className={getClassNamesFor('date')}>Date</th>
+                  <th onClick={() => requestSort('payee')} className={getClassNamesFor('payee')}>Payee</th>
+                  <th onClick={() => requestSort('catagory')} className={getClassNamesFor('catagory')}>Catagory</th>
+                  <th onClick={() => requestSort('details')} className={getClassNamesFor('details')}>Details</th>
+                  <th onClick={() => requestSort('amount')} className={getClassNamesFor('amount')}>Amount</th>
+                  <th onClick={() => requestSort('cleared')} className={getClassNamesFor('cleared')}>Cleared</th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
