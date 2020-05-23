@@ -1,11 +1,11 @@
 thead th.ascending::after {
-  content: '👇';
+  content: '▼';
   display: inline-block;
   margin-left: 1em;
 }
 
 thead th.descending::after {
-  content: '☝️';
+  content: '▲';
   display: inline-block;
   margin-left: 1em;
 }
