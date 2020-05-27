@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm'
 import { UserContext } from '../../context/UserProvider.js'
-import { MDBBtn, Container, Row, MDBCol } from 'mdbreact'
+import { MDBBtn, Container, Row, MDBCol, MDBAlert } from 'mdbreact'
 
 
 function Auth(){
@@ -22,8 +22,8 @@ function Auth(){
     // this is our handleSubmit for signup
     const handleSignupSubmit = e => {
         e.preventDefault()
-        signup(inputs)
-        setInputs(initState)
+          signup(inputs)
+          setInputs(initState)
     }
     // this is our handleSubmit for login
     const handleLoginSubmit = e => {
@@ -54,7 +54,7 @@ function Auth(){
                     handleSubmit={handleSignupSubmit}
                     btnText="Sign up"
                 />
-                <p style={{color: 'red'}}>{authErrMsg}</p>
+                {authErrMsg?<MDBAlert color="danger">{authErrMsg}</MDBAlert>: null}
                 <MDBBtn onClick={toggleForms}>Already a Member?</MDBBtn>
               </>
             :
@@ -65,15 +65,16 @@ function Auth(){
                     handleSubmit={handleLoginSubmit}
                     btnText="Login"
                 />
-                <p style={{color: 'red'}}>{authErrMsg}</p>
+                {authErrMsg?<MDBAlert color="danger">{authErrMsg}</MDBAlert>: null}
                 <MDBBtn onClick={toggleForms}>Not a Member?</MDBBtn>
               </>
             }
-            <Row>
-              <MDBBtn onClick={handleTestSubmit}>Login John Doe</MDBBtn>
-            </Row>
+            
             
           </MDBCol>
+            <MDBCol>
+              <MDBBtn onClick={handleTestSubmit}>Login John Doe</MDBBtn>
+            </MDBCol>
         </Container>
     )
 }

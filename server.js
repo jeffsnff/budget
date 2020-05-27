@@ -36,9 +36,12 @@ app.use('/api/expense', require('./routes/expenseRouter'))
 
 // Global Error Handling
 app.use((err, req, res, next) => {
-    console.log(err)
+    // console.log(err)
     if(err.name === 'UnauthorizedError'){
         res.status(err.status)
+    }
+    if(err.name ==="ValidationError"){
+      return res.send({errMsg: "Username and Password required"})
     }
     return res.send({errMsg: err.message})
 })
