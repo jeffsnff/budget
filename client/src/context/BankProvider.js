@@ -16,7 +16,18 @@ function BankProvider(props){
         accounts: [],
         expenses: []
     }
+
+   
     const [ bankState, setBankState ] = useState(initState)
+ 
+    let catagory = []
+    for(let i = 0; i<bankState.expenses.length; i++){
+      if(!catagory.includes(bankState.expenses[i].catagory)){
+        catagory.push(bankState.expenses[i].catagory)
+      }
+    }
+    console.log(`Expenses from BankProvider ${catagory}`)
+
 
     const getAllAccounts = () => {
     userAxios.get('/api/budget/user')
@@ -104,6 +115,8 @@ function BankProvider(props){
 
                 newBankAcct: newBankAcct,
 
+                expenseCatagory: catagory,
+                
                 newExpense: newExpense,
                 updateExpense: updateExpense,
                 deleteExpense: deleteExpense

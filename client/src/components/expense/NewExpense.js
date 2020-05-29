@@ -8,7 +8,7 @@ function NewExpense (props) {
 
   const initState = { date: '', payee: '', catagory: '', details: '', amount: '', cleared: false }
 
-  const { newExpense } = useContext(BankContext)
+  const { newExpense, expenseCatagory } = useContext(BankContext)
   const [ expense, setExpense ] = useState(initState)
   const [ modal, setModal ] = useState(false)
 
@@ -22,6 +22,13 @@ function NewExpense (props) {
     } 
       
   }
+
+  const mappedCatagories = expenseCatagory.map(catagory => {
+
+   return <option key={catagory} value={catagory}>{catagory}</option>
+  })
+
+  console.log(mappedCatagories)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -65,8 +72,20 @@ function NewExpense (props) {
                 name="catagory" 
                 value={expense.catagory} 
                 onChange={handleChange} 
-                label="Catagory">
+                label="Catagory"
+                selectBoxOptions={mappedCatagories}
+            >
             </MDBInput>
+            {/* <select 
+              className="browser-default custom-select"
+              type="text" 
+              name="catagory" 
+              value={expense.catagory} 
+              onChange={handleChange} 
+              label="Catagory">
+            >
+              {mappedCatagories}
+            </select> */}
             <MDBInput 
                 type="text" 
                 name="details" 
