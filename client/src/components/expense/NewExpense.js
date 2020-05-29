@@ -13,6 +13,7 @@ function NewExpense (props) {
   const [ modal, setModal ] = useState(false)
 
   const handleChange = e =>{
+
     const { name, value, checked } = e.target
     setExpense(prevExpense => ({...prevExpense, [name]: value}))
 
@@ -23,12 +24,10 @@ function NewExpense (props) {
       
   }
 
-  const mappedCatagories = expenseCatagory.map(catagory => {
-
-   return <option key={catagory} value={catagory}>{catagory}</option>
-  })
-
-  console.log(mappedCatagories)
+  // const mappedCatagories = expenseCatagory.map(catagory => {
+  //  return <option key={catagory} value={catagory}>{catagory}</option>
+  // })
+  // console.log(mappedCatagories)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -37,14 +36,11 @@ function NewExpense (props) {
     toggle()
   }
 
-
   const toggle = () => {
     setModal(prevModal => !prevModal)
     setExpense(initState)
     
   }
-
- 
 
   return (
     <MDBContainer>
@@ -73,19 +69,8 @@ function NewExpense (props) {
                 value={expense.catagory} 
                 onChange={handleChange} 
                 label="Catagory"
-                selectBoxOptions={mappedCatagories}
             >
             </MDBInput>
-            {/* <select 
-              className="browser-default custom-select"
-              type="text" 
-              name="catagory" 
-              value={expense.catagory} 
-              onChange={handleChange} 
-              label="Catagory">
-            >
-              {mappedCatagories}
-            </select> */}
             <MDBInput 
                 type="text" 
                 name="details" 

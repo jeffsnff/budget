@@ -26,7 +26,6 @@ function BankProvider(props){
         catagory.push(bankState.expenses[i].catagory)
       }
     }
-    console.log(`Expenses from BankProvider ${catagory}`)
 
 
     const getAllAccounts = () => {
