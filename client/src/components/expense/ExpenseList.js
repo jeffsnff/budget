@@ -58,6 +58,7 @@ function ExpenseList(props){
   const { getBankExpense, expenses, getAllAccounts, accounts } = useContext(BankContext)
   const { items, requestSort, sortConfig } = useSortableData(expenses)
   let currentBank = {}
+  
 
   // Updates webpage with new account information after a new expense is added
   useEffect(() => {
@@ -65,7 +66,14 @@ function ExpenseList(props){
       getAllAccounts()
   },[])
 
-    
+    // I may not need this at all
+    // let catagory = []
+    // for(let i = 0; i<expenses.length; i++){
+    //   if(!catagory.includes(expenses[i].catagory)){
+    //     catagory.push(expenses[i].catagory)
+    //   }
+    // }
+    // console.log(catagory)
 
   // returns the account that the account id matches to for the
   // bank name at the top of webpage

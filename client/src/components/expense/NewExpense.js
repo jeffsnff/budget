@@ -8,11 +8,12 @@ function NewExpense (props) {
 
   const initState = { date: '', payee: '', catagory: '', details: '', amount: '', cleared: false }
 
-  const { newExpense } = useContext(BankContext)
+  const { newExpense, expenseCatagory } = useContext(BankContext)
   const [ expense, setExpense ] = useState(initState)
   const [ modal, setModal ] = useState(false)
 
   const handleChange = e =>{
+
     const { name, value, checked } = e.target
     setExpense(prevExpense => ({...prevExpense, [name]: value}))
 
@@ -23,6 +24,11 @@ function NewExpense (props) {
       
   }
 
+  // const mappedCatagories = expenseCatagory.map(catagory => {
+  //  return <option key={catagory} value={catagory}>{catagory}</option>
+  // })
+  // console.log(mappedCatagories)
+
   const handleSubmit = e => {
     e.preventDefault()
     newExpense(expense, props)
@@ -30,14 +36,11 @@ function NewExpense (props) {
     toggle()
   }
 
-
   const toggle = () => {
     setModal(prevModal => !prevModal)
     setExpense(initState)
     
   }
-
- 
 
   return (
     <MDBContainer>
@@ -65,7 +68,8 @@ function NewExpense (props) {
                 name="catagory" 
                 value={expense.catagory} 
                 onChange={handleChange} 
-                label="Catagory">
+                label="Catagory"
+            >
             </MDBInput>
             <MDBInput 
                 type="text" 
