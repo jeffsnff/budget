@@ -23,6 +23,7 @@
     "mongoose": "^5.10.0",
     "morgan": "^1.10.0",
     "nodemon": "^1.19.4",
-    "serialize-javascript": "^5.0.1"
+    "serialize-javascript": "^5.0.1",
+    "serve": "^11.3.2"
   }
 }
