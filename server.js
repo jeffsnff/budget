@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "client", "dist"))) // used for depl
 
 
 // DB collection MONGODB_URL is to connect to  mongodb atlas for Heroku deployment
-mongoose.connect(CONNECTION_URL,
+mongoose.connect(`${CONNECTION_URL}`,
     {
         useNewUrlParser: true,
         useFindAndModify: false,
