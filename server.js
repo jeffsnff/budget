@@ -16,7 +16,7 @@ app.use(morgan('dev')) // gives updates while using CRUD
 app.use(express.static(path.join(__dirname, "client", "dist"))) // used for deplying to heroku
 
 
-// DB collection MONGODB_URL is to connect to mongoLab for Heroku deployment
+// DB collection MONGODB_URL is to connect to  mongodb atlas for Heroku deployment
 mongoose.connect(CONNECTION_URL,
     {
         useNewUrlParser: true,
