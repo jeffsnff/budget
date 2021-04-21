@@ -8,7 +8,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require("path") // used for deploying to heroku
 const secret = process.env.SECRET || "applesand bananasliketo eatweirdthings whyamidoing thistomyself"
-
+const CONNECTION_URL = process.env.database
 
 // middleware for every request
 app.use(express.json())
@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "client", "dist"))) // used for depl
 
 
 // DB collection MONGODB_URL is to connect to mongoLab for Heroku deployment
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/budget',
+mongoose.connect(CONNECTION_URL,
     {
         useNewUrlParser: true,
         useFindAndModify: false,
