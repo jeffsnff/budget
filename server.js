@@ -8,8 +8,8 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require("path") // used for deploying to heroku
 const secret = process.env.SECRET 
-const CONNECTION_URL = "mongodb+srv://jeff123:jeff123@nodebackend.l42kn.mongodb.net/budget?retryWrites=true&w=majority"
-"mongodb+srv://jeff123:jeff123@nodebackend.l42kn.mongodb.net/budget?retryWrites=true&w=majority"
+const CONNECTION_URL = process.env.DATABASE
+// "mongodb+srv://jeff123:jeff123@nodebackend.l42kn.mongodb.net/budget?retryWrites=true&w=majority"
 
 // middleware for every request
 app.use(express.json())
